@@ -65,7 +65,7 @@ export function MetricCard({ label, value, hint, icon: Icon, accent }: { label: 
         {Icon && <Icon className={cn("size-4", accent && "text-primary")} aria-hidden="true" />}
       </div>
       <div className={cn("mt-2 text-xl font-semibold tabular md:text-2xl", accent && "text-primary")}>{value}</div>
-      {hint && <div className="mt-1 text-xs text-muted-foreground">{hint}</div>}
+      {hint && <div className="mt-1 truncate text-xs text-muted-foreground">{hint}</div>}
     </div>
   );
 }
@@ -161,7 +161,7 @@ export function PeriodFilter<T extends number | null>({ value, onChange, options
           aria-pressed={o.value === value}
           onClick={() => onChange(o.value)}
           className={cn(
-            "rounded-md px-2.5 py-1 text-xs font-medium transition-colors duration-150",
+            "whitespace-nowrap rounded-md px-2 py-1 text-xs font-medium transition-colors duration-150",
             o.value === value ? "bg-elevated text-foreground" : "text-muted-foreground hover:text-foreground",
           )}
         >
