@@ -207,7 +207,7 @@ function MeasurementForm({ initial, onClose }: { initial?: BodyMeasurement; onCl
     if (!date) e.date = "Informe a data da medição.";
     const parsed: Record<string, number | undefined> = {};
     for (const f of MEASUREMENT_FIELDS) {
-      const n = parseNum(vals[f.key]);
+      const n = parseNum(vals[f.key] ?? "");
       if (n !== undefined && (!Number.isFinite(n) || n <= 0 || n > 400)) e[f.key] = "Valor inválido.";
       parsed[f.key] = n;
     }
