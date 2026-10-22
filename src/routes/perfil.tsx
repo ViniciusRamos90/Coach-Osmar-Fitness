@@ -73,7 +73,7 @@ function Perfil() {
           <li>Tema: escuro</li>
           <li>Unidades: kg, cm e R$ (padrão brasileiro)</li>
           <li>Semana: segunda a domingo</li>
-          <li className="flex gap-2"><Database className="mt-0.5 size-4 shrink-0" aria-hidden="true" />Dados salvos somente neste navegador, sem sincronização entre dispositivos.</li>
+          <li className="flex gap-2"><Database className="mt-0.5 size-4 shrink-0" aria-hidden="true" />Dados salvos na sua conta e sincronizados entre dispositivos.</li>
         </ul>
         <div className="mt-4 flex flex-wrap gap-2">
           <Button variant="outline" onClick={() => setConfirmReset(true)}><RotateCcw className="size-4" /> Restaurar dados iniciais</Button>
@@ -83,8 +83,8 @@ function Perfil() {
 
       <ProfileDialog open={editing} onOpenChange={setEditing} />
       <GoalDialog open={goalOpen} onOpenChange={setGoalOpen} current={p.goal} onSave={(goal) => { updateProfile({ goal }); toast.success("Alterações salvas."); }} />
-      <ConfirmDialog open={confirmReset} onOpenChange={setConfirmReset} title="Restaurar dados iniciais?" description="Todas as alterações locais serão descartadas e os dados de demonstração voltarão." confirmLabel="Restaurar" onConfirm={() => { resetData(); toast.success("Dados de demonstração restaurados."); }} />
-      <ConfirmDialog open={confirmOut} onOpenChange={setConfirmOut} title="Encerrar sessão demonstrativa?" description="Isto é apenas uma simulação — não há conta real. Você poderá entrar novamente em seguida." confirmLabel="Sair" destructive={false} onConfirm={() => setSignedOut(true)} />
+      <ConfirmDialog open={confirmReset} onOpenChange={setConfirmReset} title="Restaurar dados iniciais?" description="Seus treinos, medições e movimentações serão substituídos pelos dados de demonstração." confirmLabel="Restaurar" onConfirm={() => { resetData(); toast.success("Dados de demonstração restaurados."); }} />
+      <ConfirmDialog open={confirmOut} onOpenChange={setConfirmOut} title="Sair da conta?" description="Você poderá entrar novamente com seu e-mail e senha." confirmLabel="Sair" destructive={false} onConfirm={() => setSignedOut(true)} />
     </div>
   );
 }
