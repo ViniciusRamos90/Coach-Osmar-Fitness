@@ -1,5 +1,5 @@
 import { useEffect, useState, type ReactNode } from "react";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { Activity, Compass, Dumbbell, Library, ListChecks, Search } from "lucide-react";
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,7 @@ import { useStore } from "@/lib/store";
 import { EXERCISES } from "@/data/mock";
 import { FormHost } from "./forms";
 import { LoadingState, Logo } from "./common";
+import { AuthScreen } from "./auth";
 
 const NAV = [
   { to: "/treinos", label: "Treinos", icon: Dumbbell },
@@ -107,33 +108,9 @@ function QuickSearch({ open, onOpenChange }: { open: boolean; onOpenChange: (o: 
   );
 }
 
-function Welcome() {
-  const { setSignedOut, data } = useStore();
-  const navigate = useNavigate();
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-6 px-6 text-center page-enter">
-      <Logo className="text-2xl" />
-      <div>
-        <h1 className="text-2xl font-semibold">Sessão demonstrativa encerrada</h1>
-        <p className="mt-2 max-w-sm text-sm text-muted-foreground">
-          Este é um protótipo sem contas reais. Seus dados continuam salvos apenas neste navegador.
-        </p>
-      </div>
-      <Button
-        size="lg"
-        onClick={() => {
-          setSignedOut(false);
-          navigate({ to: "/treinos" });
-        }}
-      >
-        Entrar como {data.profile.name}
-      </Button>
-    </main>
-  );
-}
-
 export function AppLayout({ children }: { children: ReactNode }) {
   const { hydrated, signedOut } = useStore();
+  const { pathname } = useLocation();
   const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
@@ -147,8 +124,9 @@ export function AppLayout({ children }: { children: ReactNode }) {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
+  if (pathname === "/reset-password") return <>{children}</>;
   if (!hydrated) return <LoadingState />;
-  if (signedOut) return <Welcome />;
+  if (signedOut) return <AuthScreen />;
 
   return (
     <div className="min-h-screen">
