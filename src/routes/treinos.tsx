@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CalendarCheck, CalendarX, Dumbbell, History, Lightbulb, Plus, Ruler, Scale, Target, TrendingDown, User, Wallet } from "lucide-react";
+import { CalendarCheck, CalendarX, Dumbbell, History, Lightbulb, Plus, Ruler, Scale, Target, TrendingDown, User } from "lucide-react";
 import { useStore } from "@/lib/store";
 import { countByGroup, currentWeight, inPeriod, insights, weekStats } from "@/lib/calc";
 import { formatDate, formatHeight, formatKg, todayISO } from "@/lib/format";
@@ -131,7 +131,9 @@ function Dashboard() {
           <Link to="/atividades" className="flex flex-col gap-2 rounded-xl border bg-card p-4 text-sm font-medium transition-colors duration-150 hover:bg-elevated">
             <History className="size-5 text-muted-foreground" aria-hidden="true" /> Ver histórico
           </Link>
-          <ActionTile icon={Wallet} label="Entrada ou saída financeira" onClick={() => openForm({ kind: "transaction" })} />
+          <Link to="/corpo" className="flex flex-col gap-2 rounded-xl border bg-card p-4 text-sm font-medium transition-colors duration-150 hover:bg-elevated">
+            <Target className="size-5 text-muted-foreground" aria-hidden="true" /> Ver evolução corporal
+          </Link>
         </div>
       </div>
 

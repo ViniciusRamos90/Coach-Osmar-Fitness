@@ -1,7 +1,6 @@
 import type {
   Attendance,
   BodyMeasurement,
-  FinancialTransaction,
   MuscleGroup,
   UserProfile,
   Workout,
@@ -55,17 +54,6 @@ export function latestWeightRecord(ms: BodyMeasurement[]) {
   return sortedMeasurements(ms).find((m) => m.weightKg != null);
 }
 
-export function financialTotals(ts: FinancialTransaction[]) {
-  let income = 0;
-  let expense = 0;
-  for (const t of ts) {
-    if (t.type === "entrada") income += t.amount;
-    else expense += t.amount;
-  }
-  income = Math.round(income * 100) / 100;
-  expense = Math.round(expense * 100) / 100;
-  return { income, expense, balance: Math.round((income - expense) * 100) / 100 };
-}
 
 export function inPeriod(dateIso: string, days: number | null, today: Date = new Date()) {
   if (days == null) return true;

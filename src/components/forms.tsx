@@ -11,12 +11,8 @@ import {
   MEASUREMENT_FIELDS,
   MUSCLE_GROUPS,
   STATUS_LABEL,
-  TRANSACTION_CATEGORIES,
   type BodyMeasurement,
-  type FinancialTransaction,
   type MuscleGroup,
-  type TransactionCategory,
-  type TransactionType,
   type Workout,
   type WorkoutStatus,
 } from "@/lib/types";
@@ -250,90 +246,6 @@ function MeasurementForm({ initial, onClose }: { initial?: BodyMeasurement; onCl
   );
 }
 
-/* ---------------- Transaction ---------------- */
-
-function TransactionForm({ initial, onClose }: { initial?: FinancialTransaction; onClose: () => void }) {
-  const { addTransaction, updateTransaction } = useStore();
-  const [type, setType] = useState<TransactionType>(initial?.type ?? "saida");
-  const [description, setDescription] = useState(initial?.description ?? "");
-  const [category, setCategory] = useState<TransactionCategory>(initial?.category ?? "Academia");
-  const [amount, setAmount] = useState(initial ? String(initial.amount).replace(".", ",") : "");
-  const [date, setDate] = useState(initial?.date ?? todayISO());
-  const [notes, setNotes] = useState(initial?.notes ?? "");
-  const [errors, setErrors] = useState<Errors>({});
-  const [saving, setSaving] = useState(false);
-
-  function submit(ev: FormEvent) {
-    ev.preventDefault();
-    if (saving) return;
-    const e: Errors = {};
-    if (!description.trim()) e.description = "Informe uma descrição.";
-    const a = parseNum(amount);
-    if (a === undefined || !Number.isFinite(a) || a <= 0) e.amount = "O valor deve ser maior que zero.";
-    if (!date) e.date = "Informe a data.";
-    setErrors(e);
-    if (Object.keys(e).length) {
-      toast.error("Revise os campos destacados.");
-      return;
-    }
-    setSaving(true);
-    const payload = { type, description: description.trim(), category, amount: Math.round((a as number) * 100) / 100, date, notes: notes.trim() || undefined };
-    if (initial) {
-      updateTransaction({ ...initial, ...payload });
-      toast.success("Movimentação atualizada.");
-    } else {
-      addTransaction(payload);
-      toast.success("Movimentação adicionada.");
-    }
-    onClose();
-  }
-
-  return (
-    <form onSubmit={submit} noValidate className="space-y-4">
-      <div role="radiogroup" aria-label="Tipo de movimentação" className="grid grid-cols-2 gap-2">
-        {(["entrada", "saida"] as const).map((t) => (
-          <button
-            key={t}
-            type="button"
-            role="radio"
-            aria-checked={type === t}
-            onClick={() => setType(t)}
-            className={cn(
-              "h-10 rounded-md border text-sm font-medium transition-colors duration-150",
-              type === t ? (t === "entrada" ? "border-success bg-success/15 text-success" : "border-destructive bg-destructive/15 text-destructive") : "bg-surface text-muted-foreground hover:text-foreground",
-            )}
-          >
-            {t === "entrada" ? "↑ Entrada" : "↓ Saída"}
-          </button>
-        ))}
-      </div>
-      <Field id="t-desc" label="Descrição" error={errors.description}>
-        <Input id="t-desc" value={description} onChange={(e) => setDescription(e.target.value)} aria-invalid={!!errors.description} />
-      </Field>
-      <div className="grid grid-cols-2 gap-3">
-        <Field id="t-cat" label="Categoria">
-          <NativeSelect id="t-cat" value={category} onChange={(e) => setCategory(e.target.value as TransactionCategory)}>
-            {TRANSACTION_CATEGORIES.map((c) => <option key={c}>{c}</option>)}
-          </NativeSelect>
-        </Field>
-        <Field id="t-amount" label="Valor (R$)" error={errors.amount}>
-          <Input id="t-amount" inputMode="decimal" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="150,00" aria-invalid={!!errors.amount} />
-        </Field>
-      </div>
-      <Field id="t-date" label="Data" error={errors.date}>
-        <Input id="t-date" type="date" value={date} onChange={(e) => setDate(e.target.value)} />
-      </Field>
-      <Field id="t-notes" label="Observações (opcional)">
-        <Textarea id="t-notes" value={notes} onChange={(e) => setNotes(e.target.value)} rows={2} />
-      </Field>
-      <DialogFooter className="gap-2">
-        <Button type="button" variant="outline" onClick={onClose}>Cancelar</Button>
-        <Button type="submit" disabled={saving}>Salvar</Button>
-      </DialogFooter>
-    </form>
-  );
-}
-
 /** Renders whichever global form is open in the store. */
 export function FormHost() {
   const { form, openForm } = useStore();
@@ -346,9 +258,7 @@ export function FormHost() {
     ? null
     : form.kind === "workout"
       ? { title: form.initial?.id ? "Editar treino" : "Registrar treino", desc: "Preencha os dados da sessão." }
-      : form.kind === "measurement"
-        ? { title: form.initial ? "Editar medidas" : "Registrar medidas", desc: "Peso e medidas corporais com data." }
-        : { title: form.initial ? "Editar movimentação" : "Nova movimentação", desc: "Entrada ou saída financeira." };
+      : { title: form.initial ? "Editar medidas" : "Registrar medidas", desc: "Peso e medidas corporais com data." };
 
   return (
     <Dialog open={!!form} onOpenChange={(o) => !o && close()}>
@@ -361,7 +271,6 @@ export function FormHost() {
         )}
         {form?.kind === "workout" && <WorkoutForm key={key} initial={form.initial} onClose={close} />}
         {form?.kind === "measurement" && <MeasurementForm key={key} initial={form.initial} onClose={close} />}
-        {form?.kind === "transaction" && <TransactionForm key={key} initial={form.initial} onClose={close} />}
       </DialogContent>
     </Dialog>
   );

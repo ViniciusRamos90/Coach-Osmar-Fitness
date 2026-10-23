@@ -71,7 +71,7 @@ function Perfil() {
         <SectionTitle>Preferências</SectionTitle>
         <ul className="space-y-2 text-sm text-muted-foreground">
           <li>Tema: escuro</li>
-          <li>Unidades: kg, cm e R$ (padrão brasileiro)</li>
+          <li>Unidades: kg e cm (padrão brasileiro)</li>
           <li>Semana: segunda a domingo</li>
           <li className="flex gap-2"><Database className="mt-0.5 size-4 shrink-0" aria-hidden="true" />Dados salvos na sua conta e sincronizados entre dispositivos.</li>
         </ul>
@@ -83,7 +83,7 @@ function Perfil() {
 
       <ProfileDialog open={editing} onOpenChange={setEditing} />
       <GoalDialog open={goalOpen} onOpenChange={setGoalOpen} current={p.goal} onSave={(goal) => { updateProfile({ goal }); toast.success("Alterações salvas."); }} />
-      <ConfirmDialog open={confirmReset} onOpenChange={setConfirmReset} title="Restaurar dados iniciais?" description="Seus treinos, medições e movimentações serão substituídos pelos dados de demonstração." confirmLabel="Restaurar" onConfirm={() => { resetData(); toast.success("Dados de demonstração restaurados."); }} />
+      <ConfirmDialog open={confirmReset} onOpenChange={setConfirmReset} title="Restaurar dados iniciais?" description="Seus treinos e medições serão substituídos pelos dados de demonstração." confirmLabel="Restaurar" onConfirm={() => { resetData(); toast.success("Dados de demonstração restaurados."); }} />
       <ConfirmDialog open={confirmOut} onOpenChange={setConfirmOut} title="Sair da conta?" description="Você poderá entrar novamente com seu e-mail e senha." confirmLabel="Sair" destructive={false} onConfirm={() => setSignedOut(true)} />
     </div>
   );

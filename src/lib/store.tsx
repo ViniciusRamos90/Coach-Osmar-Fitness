@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import type { Session } from "@supabase/supabase-js";
 import { toast } from "sonner";
-import type { AppData, BodyMeasurement, FinancialTransaction, UserProfile, Workout } from "./types";
+import type { AppData, BodyMeasurement, UserProfile, Workout } from "./types";
 import { createSeedData } from "@/data/mock";
 import { supabase } from "@/integrations/supabase/client";
 import * as db from "./db";
@@ -10,7 +10,6 @@ import { todayISO } from "./format";
 type FormState =
   | { kind: "workout"; initial?: Partial<Workout> }
   | { kind: "measurement"; initial?: BodyMeasurement }
-  | { kind: "transaction"; initial?: FinancialTransaction }
   | null;
 
 interface Store {
@@ -27,9 +26,6 @@ interface Store {
   addMeasurement: (m: Omit<BodyMeasurement, "id">) => void;
   updateMeasurement: (m: BodyMeasurement) => void;
   deleteMeasurement: (id: string) => void;
-  addTransaction: (t: Omit<FinancialTransaction, "id">) => void;
-  updateTransaction: (t: FinancialTransaction) => void;
-  deleteTransaction: (id: string) => void;
   updateProfile: (p: Partial<UserProfile>) => void;
   resetData: () => void;
   form: FormState;
@@ -42,7 +38,6 @@ const emptyData = (): AppData => ({
   profile: { id: "", name: "", email: "", heightCm: 0, initialWeightKg: 0, goal: "", startDate: todayISO() },
   workouts: [],
   measurements: [],
-  transactions: [],
 });
 
 const newId = () => crypto.randomUUID();
@@ -135,14 +130,6 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         persist((d) => ({ ...d, measurements: d.measurements.map((x) => (x.id === m.id ? m : x)) }), () => db.saveMeasurement(m, false)),
       deleteMeasurement: (id) =>
         persist((d) => ({ ...d, measurements: d.measurements.filter((x) => x.id !== id) }), () => db.deleteMeasurement(id)),
-      addTransaction: (t) => {
-        const created = { ...t, id: newId() };
-        persist((d) => ({ ...d, transactions: [created, ...d.transactions] }), () => db.saveTransaction(created, true));
-      },
-      updateTransaction: (t) =>
-        persist((d) => ({ ...d, transactions: d.transactions.map((x) => (x.id === t.id ? t : x)) }), () => db.saveTransaction(t, false)),
-      deleteTransaction: (id) =>
-        persist((d) => ({ ...d, transactions: d.transactions.filter((x) => x.id !== id) }), () => db.deleteTransaction(id)),
       updateProfile: (p) => {
         const next = { ...data.profile, ...p };
         persist((d) => ({ ...d, profile: next }), () => db.saveProfile(next));
@@ -155,7 +142,6 @@ export function StoreProvider({ children }: { children: ReactNode }) {
           profile: data.profile,
           workouts: seed.workouts.map((w) => ({ ...w, id: newId(), exercises: w.exercises.map((e) => ({ ...e, id: newId() })) })),
           measurements: seed.measurements.map((m) => ({ ...m, id: newId() })),
-          transactions: seed.transactions.map((t) => ({ ...t, id: newId() })),
         };
         persist(() => demo, () => db.replaceWithDemo(demo, uid));
       },

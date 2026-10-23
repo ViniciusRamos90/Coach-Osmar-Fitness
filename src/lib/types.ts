@@ -83,28 +83,6 @@ export interface BodyMeasurement {
   notes?: string;
 }
 
-export type TransactionType = "entrada" | "saida";
-export const TRANSACTION_CATEGORIES = [
-  "Mensalidade recebida",
-  "Consultoria",
-  "Equipamentos",
-  "Academia",
-  "Suplementação",
-  "Transporte",
-  "Outros",
-] as const;
-export type TransactionCategory = (typeof TRANSACTION_CATEGORIES)[number];
-
-export interface FinancialTransaction {
-  id: string;
-  type: TransactionType;
-  description: string;
-  category: TransactionCategory;
-  amount: number; // always positive; sign comes from type
-  date: string;
-  notes?: string;
-}
-
 export type ExerciseType = "Força" | "Cardio" | "Mobilidade" | "Isométrico";
 
 export interface Exercise {
@@ -151,7 +129,6 @@ export interface AppData {
   profile: UserProfile;
   workouts: Workout[];
   measurements: BodyMeasurement[];
-  transactions: FinancialTransaction[];
 }
 
 export const MEASUREMENT_FIELDS: { key: keyof BodyMeasurement; label: string; unit: string }[] = [
