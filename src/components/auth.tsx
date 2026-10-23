@@ -27,9 +27,9 @@ export function AuthScreen() {
   async function submit(e: FormEvent) {
     e.preventDefault();
     if (busy) return;
-    if (!/^\S+@\S+\.\S+$/.test(email.trim())) return toast.error("Informe um e-mail válido.");
-    if (mode !== "forgot" && password.length < 6) return toast.error("A senha precisa ter pelo menos 6 caracteres.");
-    if (mode === "signup" && !name.trim()) return toast.error("Informe seu nome.");
+    if (!/^\S+@\S+\.\S+$/.test(email.trim())) { toast.error("Informe um e-mail válido."); return; }
+    if (mode !== "forgot" && password.length < 6) { toast.error("A senha precisa ter pelo menos 6 caracteres."); return; }
+    if (mode === "signup" && !name.trim()) { toast.error("Informe seu nome."); return; }
     setBusy(true);
     try {
       if (mode === "login") {

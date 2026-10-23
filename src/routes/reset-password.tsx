@@ -26,11 +26,11 @@ function ResetPassword() {
 
   async function submit(e: FormEvent) {
     e.preventDefault();
-    if (password.length < 6) return toast.error("A senha precisa ter pelo menos 6 caracteres.");
+    if (password.length < 6) { toast.error("A senha precisa ter pelo menos 6 caracteres."); return; }
     setBusy(true);
     const { error } = await supabase.auth.updateUser({ password });
     setBusy(false);
-    if (error) return toast.error("Link inválido ou expirado. Solicite outro.");
+    if (error) { toast.error("Link inválido ou expirado. Solicite outro."); return; }
     toast.success("Senha atualizada.");
     navigate({ to: "/treinos", replace: true });
   }
