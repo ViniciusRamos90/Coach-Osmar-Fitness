@@ -1,18 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { currentWeight, financialTotals, weekStats } from "./calc";
+import { currentWeight, weekStats } from "./calc";
 import type { UserProfile, Workout } from "./types";
 
 const profile: UserProfile = { id: "u", name: "T", email: "t@example.com", heightCm: 178, initialWeightKg: 86, goal: "", startDate: "2026-07-01" };
-
-describe("financial balance", () => {
-  it("is income minus expenses", () => {
-    const r = financialTotals([
-      { id: "1", type: "entrada", description: "", category: "Consultoria", amount: 250, date: "2026-10-01" },
-      { id: "2", type: "saida", description: "", category: "Academia", amount: 129.9, date: "2026-10-02" },
-    ]);
-    expect(r).toEqual({ income: 250, expense: 129.9, balance: 120.1 });
-  });
-});
 
 describe("current weight", () => {
   it("follows the most recent measurement and keeps initial weight as fallback", () => {

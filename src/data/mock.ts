@@ -1,7 +1,6 @@
 import type {
   AppData,
   Exercise,
-  FinancialTransaction,
   MuscleGroup,
   SuggestedWorkout,
   Workout,
@@ -108,18 +107,6 @@ export function createSeedData(today: Date = new Date()): AppData {
     { id: "m-seed-6", date: d(-7), weightKg: 82.5, waistCm: 92.5, abdomenCm: 95 },
   ];
 
-  const transactions: FinancialTransaction[] = [
-    { id: "t-seed-1", type: "entrada", description: "Mensalidade aluno A", category: "Mensalidade recebida", amount: 250, date: d(-2) },
-    { id: "t-seed-2", type: "saida", description: "Mensalidade da academia", category: "Academia", amount: 129.9, date: d(-4) },
-    { id: "t-seed-3", type: "saida", description: "Whey protein 900 g", category: "Suplementação", amount: 159.9, date: d(-6) },
-    { id: "t-seed-4", type: "entrada", description: "Consultoria de treino online", category: "Consultoria", amount: 180, date: d(-9) },
-    { id: "t-seed-5", type: "saida", description: "Par de halteres 10 kg", category: "Equipamentos", amount: 220, date: d(-15) },
-    { id: "t-seed-6", type: "saida", description: "Combustível até a academia", category: "Transporte", amount: 60, date: d(-18) },
-    { id: "t-seed-7", type: "entrada", description: "Mensalidade aluno B", category: "Mensalidade recebida", amount: 250, date: d(-25) },
-    { id: "t-seed-8", type: "saida", description: "Creatina 300 g", category: "Suplementação", amount: 89.9, date: d(-33) },
-    { id: "t-seed-9", type: "saida", description: "Faixa elástica", category: "Outros", amount: 45, date: d(-50) },
-  ];
-
   return {
     profile: {
       id: "u-demo",
@@ -132,6 +119,5 @@ export function createSeedData(today: Date = new Date()): AppData {
     },
     workouts,
     measurements,
-    transactions,
   };
 }

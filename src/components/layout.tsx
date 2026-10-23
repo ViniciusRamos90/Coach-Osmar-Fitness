@@ -89,7 +89,6 @@ function QuickSearch({ open, onOpenChange }: { open: boolean; onOpenChange: (o: 
         <CommandGroup heading="Ações">
           <CommandItem onSelect={() => go(() => openForm({ kind: "workout" }))}>Registrar treino</CommandItem>
           <CommandItem onSelect={() => go(() => openForm({ kind: "measurement" }))}>Registrar medidas</CommandItem>
-          <CommandItem onSelect={() => go(() => openForm({ kind: "transaction" }))}>Nova movimentação financeira</CommandItem>
         </CommandGroup>
         <CommandGroup heading="Páginas">
           {[...NAV, { to: "/perfil" as const, label: "Meu perfil" }].map((n) => (

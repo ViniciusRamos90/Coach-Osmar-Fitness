@@ -1,10 +1,9 @@
 // Single data-access layer between the app types and Lovable Cloud tables.
 import { supabase } from "@/integrations/supabase/client";
-import type { AppData, BodyMeasurement, FinancialTransaction, MuscleGroup, UserProfile, Workout, WorkoutStatus, TransactionCategory } from "./types";
+import type { AppData, BodyMeasurement, MuscleGroup, UserProfile, Workout, WorkoutStatus } from "./types";
 
 const num = (v: unknown) => (v === null || v === undefined ? undefined : Number(v));
 const opt = <T,>(v: T | null | undefined) => (v === null ? undefined : v);
-const toCents = (amount: number) => Math.round(amount * 100);
 
 function check<T>(res: { data: T; error: { message: string } | null }): T {
   if (res.error) throw new Error(res.error.message);
@@ -12,11 +11,10 @@ function check<T>(res: { data: T; error: { message: string } | null }): T {
 }
 
 export async function loadAll(userId: string): Promise<AppData> {
-  const [p, w, m, t] = await Promise.all([
+  const [p, w, m] = await Promise.all([
     supabase.from("profiles").select("*").eq("id", userId).maybeSingle(),
     supabase.from("workouts").select("*, workout_exercises(*)").order("workout_date", { ascending: false }),
     supabase.from("body_measurements").select("*").order("measured_on", { ascending: false }),
-    supabase.from("financial_transactions").select("*").order("transaction_date", { ascending: false }),
   ]);
   const prof = check(p);
   const profile: UserProfile = {
@@ -47,12 +45,7 @@ export async function loadAll(userId: string): Promise<AppData> {
     weightKg: num(r.weight_kg), waistCm: num(r.waist_cm), abdomenCm: num(r.abdomen_cm), chestCm: num(r.chest_cm),
     hipCm: num(r.hip_cm), armCm: num(r.arm_cm), thighCm: num(r.thigh_cm),
   }));
-  const transactions: FinancialTransaction[] = (check(t) ?? []).map((r) => ({
-    id: r.id, type: r.type as FinancialTransaction["type"], description: r.description,
-    category: (r.category ?? "Outros") as TransactionCategory, amount: Number(r.amount_cents) / 100,
-    date: r.transaction_date, notes: opt(r.notes),
-  }));
-  return { profile, workouts, measurements, transactions };
+  return { profile, workouts, measurements };
 }
 
 const workoutRow = (w: Workout) => ({
@@ -92,18 +85,6 @@ export async function deleteMeasurement(id: string) {
   check(await supabase.from("body_measurements").delete().eq("id", id));
 }
 
-const txRow = (t: FinancialTransaction) => ({
-  id: t.id, type: t.type, description: t.description.trim(), amount_cents: toCents(t.amount),
-  transaction_date: t.date, category: t.category, notes: t.notes ?? null,
-});
-export async function saveTransaction(t: FinancialTransaction, isNew: boolean) {
-  if (isNew) check(await supabase.from("financial_transactions").insert(txRow(t)));
-  else check(await supabase.from("financial_transactions").update(txRow(t)).eq("id", t.id));
-}
-export async function deleteTransaction(id: string) {
-  check(await supabase.from("financial_transactions").delete().eq("id", id));
-}
-
 export async function saveProfile(p: UserProfile) {
   check(await supabase.from("profiles").update({
     name: p.name, email: p.email, height_cm: p.heightCm || null, initial_weight_kg: p.initialWeightKg || null,
@@ -115,8 +96,6 @@ export async function saveProfile(p: UserProfile) {
 export async function replaceWithDemo(demo: AppData, userId: string) {
   check(await supabase.from("workouts").delete().eq("coach_id", userId));
   check(await supabase.from("body_measurements").delete().eq("coach_id", userId));
-  check(await supabase.from("financial_transactions").delete().eq("coach_id", userId));
   for (const w of demo.workouts) await saveWorkout(w, true);
   if (demo.measurements.length) check(await supabase.from("body_measurements").insert(demo.measurements.map(measurementRow)));
-  if (demo.transactions.length) check(await supabase.from("financial_transactions").insert(demo.transactions.map(txRow)));
 }

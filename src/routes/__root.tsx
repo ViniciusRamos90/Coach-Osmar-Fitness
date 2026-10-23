@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
       { name: "theme-color", content: "#0B0D10" },
       { title: "Coach Osmar" },
-      { name: "description", content: "Treinos, evolução física e finanças em um só lugar." },
+      { name: "description", content: "Treinos, recuperação muscular e evolução física em um só lugar." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
