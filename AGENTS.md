@@ -10,7 +10,8 @@
 <!-- LOVABLE:END -->
 
 ## Project rules
-- Frontend-only prototype: all data lives in `src/lib/store.tsx` (React Context + localStorage), seeded from `src/data/mock.ts`; no backend until requested.
+- Data lives in Lovable Cloud; `src/lib/store.tsx` keeps the same API for screens and persists optimistically through `src/lib/db.ts` (the only DB access layer), resyncing on error — screens never touch the database directly.
+- Every user table is owned by `coach_id`/`id` = auth.uid() with RLS; child tables (workout_exercises) check ownership via the parent.
 - Derived values (current weight, attendance, balances, chart series, insights) are computed in `src/lib/calc.ts`, never stored — keeps all screens consistent.
 - Create/edit forms for workouts, measurements and transactions open via the store's `openForm` and render once in `FormHost`, so any screen can trigger them.
 - tsconfig has `exactOptionalPropertyTypes` and `noPropertyAccessFromIndexSignature` off to keep form/state code simple.
