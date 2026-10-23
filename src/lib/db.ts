@@ -28,7 +28,7 @@ export async function loadAll(userId: string): Promise<AppData> {
     goal: prof?.goal ?? "",
     startDate: prof?.start_date ?? new Date().toISOString().slice(0, 10),
   };
-  const workouts: Workout[] = check(w).map((r) => ({
+  const workouts: Workout[] = (check(w) ?? []).map((r) => ({
     id: r.id,
     name: r.name,
     date: r.workout_date,
@@ -42,12 +42,12 @@ export async function loadAll(userId: string): Promise<AppData> {
       .sort((a, b) => a.position - b.position)
       .map((e) => ({ id: e.id, exerciseId: opt(e.exercise_ref), name: e.name, sets: e.sets, reps: e.reps, loadKg: num(e.load_kg) })),
   }));
-  const measurements: BodyMeasurement[] = check(m).map((r) => ({
+  const measurements: BodyMeasurement[] = (check(m) ?? []).map((r) => ({
     id: r.id, date: r.measured_on, notes: opt(r.notes),
     weightKg: num(r.weight_kg), waistCm: num(r.waist_cm), abdomenCm: num(r.abdomen_cm), chestCm: num(r.chest_cm),
     hipCm: num(r.hip_cm), armCm: num(r.arm_cm), thighCm: num(r.thigh_cm),
   }));
-  const transactions: FinancialTransaction[] = check(t).map((r) => ({
+  const transactions: FinancialTransaction[] = (check(t) ?? []).map((r) => ({
     id: r.id, type: r.type as FinancialTransaction["type"], description: r.description,
     category: (r.category ?? "Outros") as TransactionCategory, amount: Number(r.amount_cents) / 100,
     date: r.transaction_date, notes: opt(r.notes),
