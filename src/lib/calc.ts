@@ -118,3 +118,11 @@ export function insights(
 
   return out.slice(0, 3);
 }
+
+/** Onboarding plan: weeks to reach the ideal weight at a safe weekly pace (0,5 kg/sem para perder, 0,25 kg/sem para ganhar), limitado a 4–52 semanas. */
+export function buildPlan(currentKg: number, targetKg: number, trainingDays: number) {
+  const diff = Math.round((targetKg - currentKg) * 10) / 10;
+  const rate = diff < 0 ? 0.5 : 0.25;
+  const weeks = diff === 0 ? 12 : Math.min(52, Math.max(4, Math.ceil(Math.abs(diff) / rate)));
+  return { diffKg: diff, weeks, workoutsPerWeek: trainingDays };
+}

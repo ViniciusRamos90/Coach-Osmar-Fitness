@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { currentWeight, weekStats } from "./calc";
+import { buildPlan, currentWeight, weekStats } from "./calc";
 import type { UserProfile, Workout } from "./types";
 
 const profile: UserProfile = { id: "u", name: "T", email: "t@example.com", heightCm: 178, initialWeightKg: 86, goal: "", startDate: "2026-07-01" };
@@ -26,5 +26,14 @@ describe("week stats", () => {
       w("2026-10-23", "concluido"), // future
     ], today);
     expect(r).toEqual({ present: 1, absent: 1, completed: 1 });
+  });
+});
+
+describe("onboarding plan", () => {
+  it("loses 0,5 kg per week and gains 0,25 kg per week, between 4 and 52 weeks", () => {
+    expect(buildPlan(70, 65, 4)).toEqual({ diffKg: -5, weeks: 10, workoutsPerWeek: 4 });
+    expect(buildPlan(60, 63, 3).weeks).toBe(12);
+    expect(buildPlan(70, 69.5, 3).weeks).toBe(4);
+    expect(buildPlan(120, 70, 5).weeks).toBe(52);
   });
 });
