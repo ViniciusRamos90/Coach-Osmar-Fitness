@@ -198,10 +198,9 @@ export function Onboarding({ onDone }: { onDone: (a: Anamnesis) => void }) {
     return () => clearInterval(id);
   }, [step]);
   useEffect(() => {
-    if (step === "analyzing" && progress >= 100) {
-      const id = setTimeout(next, 400);
-      return () => clearTimeout(id);
-    }
+    if (step !== "analyzing" || progress < 100) return undefined;
+    const id = setTimeout(next, 400);
+    return () => clearTimeout(id);
   }, [step, progress]);
 
   const validity: Partial<Record<Step, boolean>> = {
