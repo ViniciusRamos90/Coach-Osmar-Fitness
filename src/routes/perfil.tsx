@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Database, LogOut, Pencil, RotateCcw, Target } from "lucide-react";
+import { ArrowLeft, ClipboardList, Database, LogOut, Pencil, RotateCcw, Target } from "lucide-react";
 import { toast } from "sonner";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -9,6 +9,7 @@ import { useStore } from "@/lib/store";
 import { formatDate, formatHeight, formatKg, parseNum } from "@/lib/format";
 import { Button, ConfirmDialog, Field, PageHeader, Panel, SectionTitle } from "@/components/common";
 import { UserAvatar } from "@/components/layout";
+import { useAnamnesis } from "@/components/onboarding";
 
 export const Route = createFileRoute("/perfil")({
   head: () => ({
@@ -29,6 +30,7 @@ function Perfil() {
   const [goalOpen, setGoalOpen] = useState(false);
   const [confirmReset, setConfirmReset] = useState(false);
   const [confirmOut, setConfirmOut] = useState(false);
+  const { reset: redoAnamnesis } = useAnamnesis();
 
   const rows: [string, string][] = [
     ["Nome completo", p.name],
@@ -64,6 +66,7 @@ function Perfil() {
         <div className="mt-4 flex flex-wrap gap-2">
           <Button onClick={() => setEditing(true)}><Pencil className="size-4" /> Editar informações</Button>
           <Button variant="outline" onClick={() => setGoalOpen(true)}><Target className="size-4" /> Atualizar objetivo</Button>
+          <Button variant="outline" onClick={redoAnamnesis}><ClipboardList className="size-4" /> Refazer anamnese</Button>
         </div>
       </Panel>
 

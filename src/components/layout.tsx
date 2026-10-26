@@ -8,6 +8,7 @@ import { EXERCISES } from "@/data/mock";
 import { FormHost } from "./forms";
 import { LoadingState, Logo } from "./common";
 import { AuthScreen } from "./auth";
+import { Onboarding, useAnamnesis } from "./onboarding";
 
 const NAV = [
   { to: "/treinos", label: "Treinos", icon: Dumbbell },
@@ -111,6 +112,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
   const { hydrated, signedOut } = useStore();
   const { pathname } = useLocation();
   const [searchOpen, setSearchOpen] = useState(false);
+  const { anamnesis, save } = useAnamnesis();
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -126,6 +128,8 @@ export function AppLayout({ children }: { children: ReactNode }) {
   if (pathname === "/reset-password") return <>{children}</>;
   if (!hydrated) return <LoadingState />;
   if (signedOut) return <AuthScreen />;
+  if (anamnesis === undefined) return <LoadingState />;
+  if (anamnesis === null) return <Onboarding onDone={save} />;
 
   return (
     <div className="min-h-screen">
