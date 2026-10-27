@@ -15,6 +15,7 @@ import { Route as CorpoRouteImport } from './routes/corpo'
 import { Route as ExerciciosRouteImport } from './routes/exercicios'
 import { Route as ExplorarRouteImport } from './routes/explorar'
 import { Route as PerfilRouteImport } from './routes/perfil'
+import { Route as PlanoIaRouteImport } from './routes/plano-ia'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as TreinosRouteImport } from './routes/treinos'
 
@@ -48,6 +49,11 @@ const PerfilRoute = PerfilRouteImport.update({
   path: '/perfil',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlanoIaRoute = PlanoIaRouteImport.update({
+  id: '/plano-ia',
+  path: '/plano-ia',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResetPasswordRoute = ResetPasswordRouteImport.update({
   id: '/reset-password',
   path: '/reset-password',
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/exercicios': typeof ExerciciosRoute
   '/explorar': typeof ExplorarRoute
   '/perfil': typeof PerfilRoute
+  '/plano-ia': typeof PlanoIaRoute
   '/reset-password': typeof ResetPasswordRoute
   '/treinos': typeof TreinosRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/exercicios': typeof ExerciciosRoute
   '/explorar': typeof ExplorarRoute
   '/perfil': typeof PerfilRoute
+  '/plano-ia': typeof PlanoIaRoute
   '/reset-password': typeof ResetPasswordRoute
   '/treinos': typeof TreinosRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/exercicios': typeof ExerciciosRoute
   '/explorar': typeof ExplorarRoute
   '/perfil': typeof PerfilRoute
+  '/plano-ia': typeof PlanoIaRoute
   '/reset-password': typeof ResetPasswordRoute
   '/treinos': typeof TreinosRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/exercicios'
     | '/explorar'
     | '/perfil'
+    | '/plano-ia'
     | '/reset-password'
     | '/treinos'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/exercicios'
     | '/explorar'
     | '/perfil'
+    | '/plano-ia'
     | '/reset-password'
     | '/treinos'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/exercicios'
     | '/explorar'
     | '/perfil'
+    | '/plano-ia'
     | '/reset-password'
     | '/treinos'
   fileRoutesById: FileRoutesById
@@ -130,6 +142,7 @@ export interface RootRouteChildren {
   ExerciciosRoute: typeof ExerciciosRoute
   ExplorarRoute: typeof ExplorarRoute
   PerfilRoute: typeof PerfilRoute
+  PlanoIaRoute: typeof PlanoIaRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   TreinosRoute: typeof TreinosRoute
 }
@@ -178,6 +191,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PerfilRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/plano-ia': {
+      id: '/plano-ia'
+      path: '/plano-ia'
+      fullPath: '/plano-ia'
+      preLoaderRoute: typeof PlanoIaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reset-password': {
       id: '/reset-password'
       path: '/reset-password'
@@ -202,6 +222,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExerciciosRoute: ExerciciosRoute,
   ExplorarRoute: ExplorarRoute,
   PerfilRoute: PerfilRoute,
+  PlanoIaRoute: PlanoIaRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   TreinosRoute: TreinosRoute,
 }
