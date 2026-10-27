@@ -4,5 +4,5 @@
 - [ ] Etapa 2: Home de Treinos (semana horizontal + treino do dia)
 - [ ] Etapa 3: Exercícios com mapa anatômico + filtro de equipamentos
 - [ ] Etapa 4: Atividades (fadiga + calendário) e Corpo (sub-abas + meta)
-- [ ] Gerador de plano de treino com IA (objetivos + limitações do aluno)
+- [x] Gerador de plano de treino com IA (objetivos + limitações do aluno)
 - [ ] Depois: integrar etapas ao Lovable Cloud

@@ -92,7 +92,7 @@ function QuickSearch({ open, onOpenChange }: { open: boolean; onOpenChange: (o: 
           <CommandItem onSelect={() => go(() => openForm({ kind: "measurement" }))}>Registrar medidas</CommandItem>
         </CommandGroup>
         <CommandGroup heading="Páginas">
-          {[...NAV, { to: "/perfil" as const, label: "Meu perfil" }].map((n) => (
+          {[...NAV, { to: "/perfil" as const, label: "Meu perfil" }, { to: "/plano-ia" as const, label: "Gerar plano com IA" }].map((n) => (
             <CommandItem key={n.to} onSelect={() => go(() => navigate({ to: n.to }))}>{n.label}</CommandItem>
           ))}
         </CommandGroup>

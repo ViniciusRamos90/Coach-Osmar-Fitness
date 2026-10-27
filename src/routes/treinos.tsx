@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CalendarCheck, CalendarX, Dumbbell, History, Lightbulb, Plus, Ruler, Scale, Target, TrendingDown, User } from "lucide-react";
+import { CalendarCheck, CalendarX, Dumbbell, History, Lightbulb, Plus, Ruler, Scale, Sparkles, Target, TrendingDown, User } from "lucide-react";
 import { useStore } from "@/lib/store";
 import { countByGroup, currentWeight, inPeriod, insights, weekStats } from "@/lib/calc";
 import { formatDate, formatHeight, formatKg, todayISO } from "@/lib/format";
@@ -125,7 +125,10 @@ function Dashboard() {
 
       <div>
         <SectionTitle>Próximas ações</SectionTitle>
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-5">
+          <Link to="/plano-ia" className="flex flex-col gap-2 rounded-xl border border-primary bg-primary/10 p-4 text-sm font-medium transition-colors duration-150 hover:bg-primary/20">
+            <Sparkles className="size-5 text-primary" aria-hidden="true" /> Gerar plano com IA
+          </Link>
           <ActionTile icon={Plus} label="Registrar treino" primary onClick={() => openForm({ kind: "workout" })} />
           <ActionTile icon={Scale} label="Registrar peso ou medidas" onClick={() => openForm({ kind: "measurement" })} />
           <Link to="/atividades" className="flex flex-col gap-2 rounded-xl border bg-card p-4 text-sm font-medium transition-colors duration-150 hover:bg-elevated">
