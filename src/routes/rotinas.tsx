@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { startSession } from "@/lib/local/session";
+import { localDB, sessionRepo } from "@/lib/local/db";
 import { Archive, ArrowDown, ArrowUp, Copy, ListPlus, Pencil, Play, Plus, Trash2, X } from "lucide-react";
 import { toast } from "sonner";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -61,7 +63,7 @@ function RoutinesPage() {
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  <Button size="sm" className="min-h-11" onClick={() => toast.info("A sessão ativa chega na próxima etapa.")} disabled={exerciseCount(r) === 0}><Play className="size-4" /> Iniciar</Button>
+                  <Button size="sm" className="min-h-11" onClick={async () => { if (await localDB().sessions.where("status").equals("in_progress").count()) { toast.info("Já há um treino em andamento."); void navigate({ to: "/treino" }); return; } const i = r.sessions.findIndex((s) => s.exercises.length); if (await sessionRepo.save(startSession(r, i))) void navigate({ to: "/treino" }); }} disabled={exerciseCount(r) === 0}><Play className="size-4" /> Iniciar</Button>
                   <Button size="sm" variant="outline" className="min-h-11" onClick={() => setEditing(structuredClone(r))}><Pencil className="size-4" /> Editar</Button>
                   <Button size="sm" variant="outline" className="min-h-11" onClick={() => void routineRepo.save(duplicateRoutine(r, nextOrder), "Rotina duplicada")}><Copy className="size-4" /> Duplicar</Button>
                   {r.status !== "active" && <Button size="sm" variant="outline" className="min-h-11" onClick={() => void routineRepo.save({ ...r, status: "active" }, "Rotina ativada")}>Ativar</Button>}

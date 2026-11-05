@@ -12,7 +12,7 @@ import { AuthScreen } from "./auth";
 import { Onboarding, useAnamnesis } from "./onboarding";
 
 const NAV = [
-  { to: "/treinos", label: "Treinos", icon: Dumbbell },
+  { to: "/hoje", label: "Hoje", icon: Dumbbell },
   { to: "/atividades", label: "Atividades", icon: ListChecks },
   { to: "/rotinas", label: "Rotinas", icon: Compass },
   { to: "/exercicios", label: "Exercícios", icon: Library },
@@ -33,7 +33,7 @@ function AppHeader({ onSearch }: { onSearch: () => void }) {
   return (
     <header className="sticky top-0 z-30 border-b bg-background/90 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 px-4">
-        <Link to="/treinos" aria-label="Coach Osmar — início">
+        <Link to="/hoje" aria-label="Coach Osmar — início">
           <Logo />
         </Link>
         <div className="flex items-center gap-2">
@@ -136,7 +136,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
     <div className="min-h-screen">
       <AppHeader onSearch={() => setSearchOpen(true)} />
       <main className="mx-auto max-w-6xl px-4 pb-28 pt-6">{children}</main>
-      <BottomNavigation />
+      {pathname !== "/treino" && <BottomNavigation />}
       <FormHost />
       <QuickSearch open={searchOpen} onOpenChange={setSearchOpen} />
     </div>
