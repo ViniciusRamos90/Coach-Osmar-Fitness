@@ -46,6 +46,16 @@ export const routineRepo = {
   saveMany: (list: Routine[]) => safeWrite(() => localDB().routines.bulkPut(list)),
 };
 
+export const sessionRepo = {
+  save: (s: WorkoutSession, msg?: string) => safeWrite(() => localDB().sessions.put(s), msg),
+};
+
+export const DEFAULT_PREFS: UserPreferences = { id: "prefs", loadUnit: "kg", theme: "dark", weekStart: "monday", defaultRestSeconds: 90 };
+export const usePrefs = () => useLiveQuery(async () => (await localDB().prefs.get("prefs")) ?? DEFAULT_PREFS, []);
+export const useSessions = () => useLiveQuery(() => localDB().sessions.toArray(), []);
+export const useActiveSession = () =>
+  useLiveQuery(async () => (await localDB().sessions.where("status").equals("in_progress").first()) ?? null, []);
+
 export const useExercises = () => useLiveQuery(() => localDB().exercises.orderBy("name").toArray(), []);
 export const useRoutines = () => useLiveQuery(() => localDB().routines.toArray(), []);
 export const useExerciseHistory = (exerciseId: string | null) =>

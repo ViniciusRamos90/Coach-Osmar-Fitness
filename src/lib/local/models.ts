@@ -67,7 +67,9 @@ export interface SetLog {
 export interface WorkoutSession {
   id: string;
   routineId?: string;
+  routineSessionId?: string;
   name: string;
+  plan?: { exerciseId: string; targetSets: number; repMin: number; repMax: number; restSeconds: number; note?: string }[];
   startedAt: string;
   endedAt?: string;
   status: "in_progress" | "completed" | "interrupted" | "cancelled";
