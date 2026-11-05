@@ -17,3 +17,4 @@
 - tsconfig has `exactOptionalPropertyTypes` and `noPropertyAccessFromIndexSignature` off to keep form/state code simple.
 - AI calls live in `*.server.ts` behind authenticated `*.functions.ts` server functions (Lovable AI Gateway, Responses API, structured output) — keeps the key and prompts server-side.
 - Onboarding answers are kept per user in browser storage (`src/components/onboarding.tsx`) during the frontend-first phase; move to the database when the backend phase starts.
+- Fase 1 local data (routines, catalog, sessions, prefs) lives in IndexedDB via Dexie in `src/lib/local/`; pure logic in `routines.ts` is unit-tested — offline-first, no account needed.
