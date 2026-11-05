@@ -14,10 +14,12 @@ import { Route as AtividadesRouteImport } from './routes/atividades'
 import { Route as CorpoRouteImport } from './routes/corpo'
 import { Route as ExerciciosRouteImport } from './routes/exercicios'
 import { Route as ExplorarRouteImport } from './routes/explorar'
+import { Route as HojeRouteImport } from './routes/hoje'
 import { Route as PerfilRouteImport } from './routes/perfil'
 import { Route as PlanoIaRouteImport } from './routes/plano-ia'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as RotinasRouteImport } from './routes/rotinas'
+import { Route as TreinoRouteImport } from './routes/treino'
 import { Route as TreinosRouteImport } from './routes/treinos'
 
 const IndexRoute = IndexRouteImport.update({
@@ -45,6 +47,11 @@ const ExplorarRoute = ExplorarRouteImport.update({
   path: '/explorar',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HojeRoute = HojeRouteImport.update({
+  id: '/hoje',
+  path: '/hoje',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PerfilRoute = PerfilRouteImport.update({
   id: '/perfil',
   path: '/perfil',
@@ -65,6 +72,11 @@ const RotinasRoute = RotinasRouteImport.update({
   path: '/rotinas',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TreinoRoute = TreinoRouteImport.update({
+  id: '/treino',
+  path: '/treino',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TreinosRoute = TreinosRouteImport.update({
   id: '/treinos',
   path: '/treinos',
@@ -77,10 +89,12 @@ export interface FileRoutesByFullPath {
   '/corpo': typeof CorpoRoute
   '/exercicios': typeof ExerciciosRoute
   '/explorar': typeof ExplorarRoute
+  '/hoje': typeof HojeRoute
   '/perfil': typeof PerfilRoute
   '/plano-ia': typeof PlanoIaRoute
   '/reset-password': typeof ResetPasswordRoute
   '/rotinas': typeof RotinasRoute
+  '/treino': typeof TreinoRoute
   '/treinos': typeof TreinosRoute
 }
 export interface FileRoutesByTo {
@@ -89,10 +103,12 @@ export interface FileRoutesByTo {
   '/corpo': typeof CorpoRoute
   '/exercicios': typeof ExerciciosRoute
   '/explorar': typeof ExplorarRoute
+  '/hoje': typeof HojeRoute
   '/perfil': typeof PerfilRoute
   '/plano-ia': typeof PlanoIaRoute
   '/reset-password': typeof ResetPasswordRoute
   '/rotinas': typeof RotinasRoute
+  '/treino': typeof TreinoRoute
   '/treinos': typeof TreinosRoute
 }
 export interface FileRoutesById {
@@ -102,10 +118,12 @@ export interface FileRoutesById {
   '/corpo': typeof CorpoRoute
   '/exercicios': typeof ExerciciosRoute
   '/explorar': typeof ExplorarRoute
+  '/hoje': typeof HojeRoute
   '/perfil': typeof PerfilRoute
   '/plano-ia': typeof PlanoIaRoute
   '/reset-password': typeof ResetPasswordRoute
   '/rotinas': typeof RotinasRoute
+  '/treino': typeof TreinoRoute
   '/treinos': typeof TreinosRoute
 }
 export interface FileRouteTypes {
@@ -116,10 +134,12 @@ export interface FileRouteTypes {
     | '/corpo'
     | '/exercicios'
     | '/explorar'
+    | '/hoje'
     | '/perfil'
     | '/plano-ia'
     | '/reset-password'
     | '/rotinas'
+    | '/treino'
     | '/treinos'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -128,10 +148,12 @@ export interface FileRouteTypes {
     | '/corpo'
     | '/exercicios'
     | '/explorar'
+    | '/hoje'
     | '/perfil'
     | '/plano-ia'
     | '/reset-password'
     | '/rotinas'
+    | '/treino'
     | '/treinos'
   id:
     | '__root__'
@@ -140,10 +162,12 @@ export interface FileRouteTypes {
     | '/corpo'
     | '/exercicios'
     | '/explorar'
+    | '/hoje'
     | '/perfil'
     | '/plano-ia'
     | '/reset-password'
     | '/rotinas'
+    | '/treino'
     | '/treinos'
   fileRoutesById: FileRoutesById
 }
@@ -153,10 +177,12 @@ export interface RootRouteChildren {
   CorpoRoute: typeof CorpoRoute
   ExerciciosRoute: typeof ExerciciosRoute
   ExplorarRoute: typeof ExplorarRoute
+  HojeRoute: typeof HojeRoute
   PerfilRoute: typeof PerfilRoute
   PlanoIaRoute: typeof PlanoIaRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   RotinasRoute: typeof RotinasRoute
+  TreinoRoute: typeof TreinoRoute
   TreinosRoute: typeof TreinosRoute
 }
 
@@ -197,6 +223,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExplorarRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hoje': {
+      id: '/hoje'
+      path: '/hoje'
+      fullPath: '/hoje'
+      preLoaderRoute: typeof HojeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/perfil': {
       id: '/perfil'
       path: '/perfil'
@@ -225,6 +258,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RotinasRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/treino': {
+      id: '/treino'
+      path: '/treino'
+      fullPath: '/treino'
+      preLoaderRoute: typeof TreinoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/treinos': {
       id: '/treinos'
       path: '/treinos'
@@ -241,10 +281,12 @@ const rootRouteChildren: RootRouteChildren = {
   CorpoRoute: CorpoRoute,
   ExerciciosRoute: ExerciciosRoute,
   ExplorarRoute: ExplorarRoute,
+  HojeRoute: HojeRoute,
   PerfilRoute: PerfilRoute,
   PlanoIaRoute: PlanoIaRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   RotinasRoute: RotinasRoute,
+  TreinoRoute: TreinoRoute,
   TreinosRoute: TreinosRoute,
 }
 export const routeTree = rootRouteImport
