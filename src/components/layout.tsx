@@ -4,7 +4,8 @@ import { Activity, Compass, Dumbbell, Library, ListChecks, Search } from "lucide
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Button } from "@/components/ui/button";
 import { useStore } from "@/lib/store";
-import { EXERCISES } from "@/data/mock";
+import { buildCatalog } from "@/lib/local/catalog";
+const EXERCISES = buildCatalog();
 import { FormHost } from "./forms";
 import { LoadingState, Logo } from "./common";
 import { AuthScreen } from "./auth";
@@ -13,7 +14,7 @@ import { Onboarding, useAnamnesis } from "./onboarding";
 const NAV = [
   { to: "/treinos", label: "Treinos", icon: Dumbbell },
   { to: "/atividades", label: "Atividades", icon: ListChecks },
-  { to: "/explorar", label: "Explorar", icon: Compass },
+  { to: "/rotinas", label: "Rotinas", icon: Compass },
   { to: "/exercicios", label: "Exercícios", icon: Library },
   { to: "/corpo", label: "Corpo", icon: Activity },
 ] as const;
