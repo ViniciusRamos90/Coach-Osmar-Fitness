@@ -25,6 +25,7 @@ export const Route = createFileRoute("/rotinas")({
 });
 
 function RoutinesPage() {
+  const navigate = useNavigate();
   const routines = useRoutines();
   const [editing, setEditing] = useState<Routine | null>(null);
   const [toDelete, setToDelete] = useState<Routine | null>(null);
