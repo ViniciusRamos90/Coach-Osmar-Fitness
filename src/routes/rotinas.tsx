@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { startSession } from "@/lib/local/session";
-import { localDB, sessionRepo } from "@/lib/local/db";
 import { Archive, ArrowDown, ArrowUp, Copy, ListPlus, Pencil, Play, Plus, Trash2, X } from "lucide-react";
 import { toast } from "sonner";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button, ConfirmDialog, EmptyState, LoadingState, PageHeader, Panel, Tag } from "@/components/common";
 import { ExerciseBrowser } from "@/components/exercise-catalog";
-import { routineRepo, useExercises, useRoutines } from "@/lib/local/db";
+import { localDB, routineRepo, sessionRepo, useExercises, useRoutines } from "@/lib/local/db";
 import { newId, type Routine, type RoutineExercise } from "@/lib/local/models";
 import { STATUS_LABEL, STATUS_ORDER, createRoutine, duplicateRoutine, exerciseCount, makeRoutineExercise, moveItem, reorderExercises, sortRoutines, validateRoutine } from "@/lib/local/routines";
 
