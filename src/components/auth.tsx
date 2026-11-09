@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Logo } from "./common";
+import logoAsset from "@/assets/coach-osmar-logo.png.asset.json";
 
 type Mode = "login" | "signup" | "forgot";
 
@@ -61,7 +61,7 @@ export function AuthScreen() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-6 px-6 page-enter">
-      <Logo className="text-2xl" />
+      <div className="mx-auto w-full max-w-xs rounded-2xl bg-foreground p-4 shadow-card"><img src={logoAsset.url} alt="Coach Osmar Bacchiega" className="w-full" /></div>
       <div className="w-full max-w-sm rounded-xl border bg-card p-6">
         <h1 className="mb-4 text-xl font-semibold">{title}</h1>
         {sent ? (
