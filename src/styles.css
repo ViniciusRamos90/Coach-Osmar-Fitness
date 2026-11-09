@@ -124,3 +124,6 @@
     transform: none;
   }
 }
+
+/* Wine #7d1919 is too dark for text on navy; text uses a lighter tint of the same hue. */
+.text-primary { color: oklch(0.68 0.15 25); }
