@@ -44,31 +44,31 @@
 
 :root {
   --radius: 0.75rem;
-  --background: #060733;
-  --surface: #0b0c40;
-  --card: #10124b;
-  --elevated: #171a5a;
-  --foreground: oklch(0.97 0.003 250);
+  --background: #08090c;
+  --surface: #0e1015;
+  --card: #13151c;
+  --elevated: #1b1e27;
+  --foreground: #ffffff;
   --card-foreground: oklch(0.97 0.003 250);
-  --popover: #171a5a;
+  --popover: #1b1e27;
   --popover-foreground: oklch(0.97 0.003 250);
   --primary: #7d1919;
   --primary-foreground: oklch(0.98 0 0);
-  --secondary: #171a5a;
+  --secondary: #1b1e27;
   --secondary-foreground: oklch(0.97 0.003 250);
-  --muted: #171a5a;
-  --muted-foreground: oklch(0.76 0.03 270);
-  --accent: #1d2066;
+  --muted: #1b1e27;
+  --muted-foreground: #a1a1aa;
+  --accent: #060733;
   --accent-foreground: oklch(0.97 0.003 250);
   --destructive: oklch(0.65 0.2 25);
   --destructive-foreground: oklch(0.97 0.003 250);
   --success: oklch(0.74 0.16 150);
   --warning: oklch(0.8 0.15 75);
-  --border: #262a72;
-  --input: #262a72;
+  --border: #262a3a;
+  --input: #2a2e3d;
   --ring: #b03030;
   --chart-1: #c23a3a;
-  --chart-2: #5a60c0;
+  --chart-2: #4a50a8;
   --chart-3: oklch(0.74 0.16 150);
   --chart-4: oklch(0.8 0.15 75);
   --chart-5: oklch(0.65 0.2 25);
@@ -125,5 +125,5 @@
   }
 }
 
-/* Wine #7d1919 is too dark for text on navy; text uses a lighter tint of the same hue. */
+/* Wine #7d1919 is too dark for text on dark bg; text uses a lighter tint of the same hue. */
 .text-primary { color: oklch(0.68 0.15 25); }
