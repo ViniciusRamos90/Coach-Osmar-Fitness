@@ -3,6 +3,7 @@ import { AlertTriangle } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { LoadingState, PageHeader, Tag } from "@/components/common";
 import { ExerciseBrowser } from "@/components/exercise-catalog";
+import { MuscleMap } from "@/components/muscle-map";
 import { useExerciseHistory, useExercises } from "@/lib/local/db";
 import { EQUIPMENT_LABEL, MUSCLE_LABEL } from "@/lib/local/models";
 import { formatDate } from "@/lib/format";
@@ -40,6 +41,7 @@ function ExercisesPage() {
                 <DialogTitle>{selected.name}</DialogTitle>
                 <DialogDescription>{EQUIPMENT_LABEL[selected.equipment]}</DialogDescription>
               </DialogHeader>
+              <div className="rounded-xl bg-surface p-3"><MuscleMap muscles={selected.muscleGroups} size="lg" /></div>
               <div className="flex flex-wrap gap-1.5">{selected.muscleGroups.map((m) => <Tag key={m}>{MUSCLE_LABEL[m]}</Tag>)}</div>
               <section>
                 <h3 className="mb-2 text-sm font-semibold">Como fazer</h3>

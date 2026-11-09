@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
-import { Dumbbell, Heart, SearchX } from "lucide-react";
+import { Heart, SearchX } from "lucide-react";
+import { MuscleMap } from "@/components/muscle-map";
 import { Chip, EmptyState, SearchInput, Button } from "@/components/common";
 import { EQUIPMENT, EQUIPMENT_LABEL, MUSCLES, MUSCLE_LABEL, type Equipment, type Exercise, type Muscle } from "@/lib/local/models";
 import { exerciseRepo } from "@/lib/local/db";
@@ -45,7 +46,7 @@ export function ExerciseBrowser({ exercises, onSelect, actionLabel }: { exercise
           {list.map((e) => (
             <li key={e.id} className="flex items-center gap-2 pr-2">
               <button onClick={() => onSelect(e)} className="flex min-h-14 flex-1 items-center gap-3 px-3 py-2 text-left hover:bg-accent/40 focus-visible:outline-2">
-                <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-elevated text-primary" aria-hidden="true"><Dumbbell className="size-5" /></span>
+                <span className="flex h-14 w-16 shrink-0 items-center justify-center rounded-lg bg-surface" aria-hidden="true"><MuscleMap muscles={e.muscleGroups} /></span>
                 <span className="min-w-0">
                   <span className="block truncate font-medium">{e.name}</span>
                   <span className="block truncate text-xs text-muted-foreground">{e.muscleGroups.map((m) => MUSCLE_LABEL[m]).join(", ")} · {EQUIPMENT_LABEL[e.equipment]}</span>
