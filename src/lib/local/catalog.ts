@@ -1,3 +1,4 @@
+import { EXERCISE_MEDIA } from "./exercise-media";
 import type { Equipment, Exercise, Muscle } from "./models";
 
 // Catálogo original de demonstração (textos próprios deste projeto).
@@ -43,5 +44,5 @@ const SEEDS: Seed[] = [
 ];
 
 export function buildCatalog(): Exercise[] {
-  return SEEDS.map(([id, name, muscleGroups, equipment, instructions, caution]) => ({ id, name, muscleGroups, equipment, instructions, caution, isFavorite: false }));
+  return SEEDS.map(([id, name, muscleGroups, equipment, instructions, caution]) => ({ id, name, muscleGroups, equipment, instructions, caution, imageUrl: EXERCISE_MEDIA[id], isFavorite: false }));
 }

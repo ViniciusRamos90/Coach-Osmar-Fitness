@@ -22,6 +22,7 @@ export interface Exercise {
   equipment: Equipment;
   instructions: string[];
   caution: string;
+  imageUrl?: string;
   isFavorite: boolean;
 }
 

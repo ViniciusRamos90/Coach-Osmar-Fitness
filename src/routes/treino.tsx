@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { Input } from "@/components/ui/input";
 import { Button, ConfirmDialog, EmptyState, LoadingState, Panel } from "@/components/common";
 import { ExerciseBrowser } from "@/components/exercise-catalog";
-import { MuscleMap } from "@/components/muscle-map";
+import { ExerciseVisual } from "@/components/exercise-visual";
 import { sessionRepo, useActiveSession, useExercises, usePrefs } from "@/lib/local/db";
 import { formatClock, logSet, skipExercise, volume } from "@/lib/local/session";
 import type { WorkoutSession } from "@/lib/local/models";
@@ -75,7 +75,7 @@ function LiveWorkout() {
           <Panel key={p.exerciseId}>
             <div className="mb-3 flex items-start justify-between gap-2">
               <div className="flex items-center gap-3">
-                <div className="flex h-16 w-20 shrink-0 items-center justify-center rounded-lg bg-surface" aria-hidden="true"><MuscleMap muscles={ex?.muscleGroups ?? []} size="sm" /></div>
+                <div className="flex h-16 w-20 shrink-0 items-center justify-center rounded-lg bg-surface" aria-hidden="true">{ex && <ExerciseVisual exercise={ex} />}</div>
                 <div>
                 <h2 className="font-semibold">{ex?.name ?? "Exercício"}</h2>
                 <p className="text-xs text-muted-foreground">{p.targetSets} × {p.repMin}–{p.repMax} reps · descanso {p.restSeconds}s{p.note ? ` · ${p.note}` : ""}</p>
