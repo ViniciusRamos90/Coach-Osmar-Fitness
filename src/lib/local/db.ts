@@ -1,8 +1,9 @@
 import Dexie, { type Table } from "dexie";
 import { useLiveQuery } from "dexie-react-hooks";
 import { toast } from "sonner";
-import { buildCatalog } from "./catalog";
+import { buildCatalog, buildLibrary } from "./catalog";
 import { EXERCISE_MEDIA } from "./exercise-media";
+import { LIBRARY_MEDIA } from "./library-media";
 import type { Exercise, Routine, UserPreferences, WorkoutSession } from "./models";
 
 // IndexedDB é a fonte local de verdade da Fase 1. Interfaces simples para futura sincronização.
@@ -20,8 +21,20 @@ class LocalDB extends Dexie {
 
 let instance: LocalDB | null = null;
 export function localDB(): LocalDB {
-  if (!instance) instance = new LocalDB();
+  if (!instance) {
+    instance = new LocalDB();
+    void ensureLibrary(instance);
+  }
   return instance;
+}
+
+/** Adiciona exercícios da biblioteca que ainda não existem (preserva favoritos). */
+async function ensureLibrary(db: LocalDB) {
+  try {
+    const have = new Set(await db.exercises.toCollection().primaryKeys());
+    const missing = [...buildCatalog(), ...buildLibrary()].filter((e) => !have.has(e.id));
+    if (missing.length) await db.exercises.bulkAdd(missing);
+  } catch { /* tenta novamente na próxima abertura */ }
 }
 
 /** Executa uma escrita; em falha mostra erro claro e não indica "salvo". */
@@ -59,7 +72,7 @@ export const useActiveSession = () =>
 
 export const useExercises = () => useLiveQuery(async () => {
   const list = await localDB().exercises.orderBy("name").toArray();
-  return list.map((exercise) => ({ ...exercise, imageUrl: EXERCISE_MEDIA[exercise.id] ?? exercise.imageUrl }));
+  return list.map((exercise) => ({ ...exercise, imageUrl: EXERCISE_MEDIA[exercise.id] ?? (exercise.id.startsWith("lib-") ? LIBRARY_MEDIA[Number(exercise.id.slice(4))] : undefined) ?? exercise.imageUrl }));
 }, []);
 export const useRoutines = () => useLiveQuery(() => localDB().routines.toArray(), []);
 export const useExerciseHistory = (exerciseId: string | null) =>
