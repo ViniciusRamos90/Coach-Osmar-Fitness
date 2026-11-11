@@ -47,7 +47,7 @@ export function ExerciseBrowser({ exercises, onSelect, actionLabel }: { exercise
         <ul className="divide-y rounded-xl border bg-card">
           {list.slice(0, limit).map((e) => (
             <li key={e.id} className="flex items-center gap-2 pr-2">
-              <button onClick={() => onSelect(e)} className="flex min-h-14 flex-1 items-center gap-3 px-3 py-2 text-left hover:bg-accent/40 focus-visible:outline-2">
+              <button onClick={() => onSelect(e)} className="flex min-h-14 min-w-0 flex-1 items-center gap-3 px-3 py-2 text-left hover:bg-accent/40 focus-visible:outline-2">
                 <span className="flex h-14 w-16 shrink-0 items-center justify-center rounded-lg bg-surface" aria-hidden="true"><ExerciseVisual exercise={e} /></span>
                 <span className="min-w-0">
                   <span className="block truncate font-medium">{e.name}</span>
