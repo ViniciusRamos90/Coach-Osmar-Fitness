@@ -1,0 +1,101 @@
+﻿tipo,id_exercicio,caminho,detalhe,acao_sugerida
+nome_repetido,exercicio_0014,/exercises/im_ex14.gif,"Nome ""Rosca Alternada (halteres)"" também em exercicio_0173",Revisão humana do nome
+nome_repetido,exercicio_0015,/exercises/im_ex15.gif,"Nome ""Rosca Martelo (halteres)"" também em exercicio_0935",Revisão humana do nome
+nome_repetido,exercicio_0023,/exercises/im_ex23.gif,"Nome ""Rosca de Punho (barra)"" também em exercicio_0693",Revisão humana do nome
+nome_repetido,exercicio_0027,/exercises/im_ex27.gif,"Nome ""Rotação de Tronco (barra)"" também em exercicio_0656",Revisão humana do nome
+nome_repetido,exercicio_0037,/exercises/im_ex37.gif,"Nome ""Adução de Quadril (polia)"" também em exercicio_0799",Revisão humana do nome
+nome_repetido,exercicio_0044,/exercises/im_ex44.gif,"Nome ""Tríceps Coice (halteres)"" também em exercicio_1064",Revisão humana do nome
+nome_repetido,exercicio_0059,/exercises/im_ex59.gif,"Nome ""Elevação de Quadril (barra)"" também em exercicio_0252",Revisão humana do nome
+nome_repetido,exercicio_0064,/exercises/im_ex64.gif,"Nome ""Elevação de Panturrilha Sentado (máquina)"" também em exercicio_0566, exercicio_0590",Revisão humana do nome
+nome_repetido,exercicio_0097,/exercises/im_ex97.gif,"Nome ""Leg Press Vertical (máquina)"" também em exercicio_0363",Revisão humana do nome
+nome_repetido,exercicio_0132,/exercises/im_ex132.gif,"Nome ""Abdominal com Pernas Elevadas"" também em exercicio_0291",Revisão humana do nome
+nome_repetido,exercicio_0163,/exercises/im_ex163.gif,"Nome ""Rotação de Ombros Externa (polia)"" também em exercicio_0740",Revisão humana do nome
+nome_repetido,exercicio_0169,/exercises/im_ex169.gif,"Nome ""Rosca Direta (polia)"" também em exercicio_0749, exercicio_0802",Revisão humana do nome
+nome_repetido,exercicio_0173,/exercises/im_ex173.gif,"Nome ""Rosca Alternada (halteres)"" também em exercicio_0014",Revisão humana do nome
+nome_repetido,exercicio_0176,/exercises/im_ex176.gif,"Nome ""Supino Declinado em Pé (polia)"" também em exercicio_0814",Revisão humana do nome
+nome_repetido,exercicio_0203,/exercises/im_ex203.gif,"Nome ""Rosca de Punho (polia)"" também em exercicio_0806",Revisão humana do nome
+nome_repetido,exercicio_0209,/exercises/im_ex209.gif,"Nome ""Leg Press Unilateral (máquina)"" também em exercicio_0370",Revisão humana do nome
+nome_repetido,exercicio_0216,/exercises/im_ex216.gif,"Nome ""Elevação de Panturrilha Sentado (halteres)"" também em exercicio_0377",Revisão humana do nome
+nome_repetido,exercicio_0218,/exercises/im_ex218.gif,"Nome ""Extensão de Tríceps em Pé (halteres)"" também em exercicio_0889",Revisão humana do nome
+nome_repetido,exercicio_0221,/exercises/im_ex221.gif,"Nome ""Extensão de Tríceps Sentado (halteres)"" também em exercicio_1044",Revisão humana do nome
+nome_repetido,exercicio_0226,/exercises/im_ex226.gif,"Nome ""Encolhimento de Ombros (smith)"" também em exercicio_0480",Revisão humana do nome
+nome_repetido,exercicio_0227,/exercises/im_ex227.gif,"Nome ""Encolhimento de Ombros (máquina)"" também em exercicio_0555",Revisão humana do nome
+nome_repetido,exercicio_0228,/exercises/im_ex228.gif,"Nome ""Remada Alta (polia)"" também em exercicio_0721",Revisão humana do nome
+nome_repetido,exercicio_0239,/exercises/im_ex239.gif,"Nome ""Desenvolvimento de Ombros Sentado (smith)"" também em exercicio_0477",Revisão humana do nome
+nome_repetido,exercicio_0240,/exercises/im_ex240.gif,"Nome ""Elevação Frontal Unilateral (polia)"" também em exercicio_0862",Revisão humana do nome
+possivel_duplicata,exercicio_0245,/exercises/im_ex245.gif,Mesmo SHA-256 que exercicio_0288,Revisão humana; não apagar
+nome_repetido,exercicio_0249,/exercises/im_ex249.gif,"Nome ""Abdominal Oblíquo (polia)"" também em exercicio_0847",Revisão humana do nome
+nome_repetido,exercicio_0250,/exercises/im_ex250.gif,"Nome ""Abdominal (polia)"" também em exercicio_0805",Revisão humana do nome
+nome_repetido,exercicio_0252,/exercises/im_ex252.gif,"Nome ""Elevação de Quadril (barra)"" também em exercicio_0059",Revisão humana do nome
+possivel_duplicata,exercicio_0255,/exercises/im_ex255.gif,Mesmo SHA-256 que exercicio_0331,Revisão humana; não apagar
+possivel_duplicata,exercicio_0256,/exercises/im_ex256.gif,Mesmo SHA-256 que exercicio_0259,Revisão humana; não apagar
+possivel_duplicata,exercicio_0259,/exercises/im_ex259.gif,Mesmo SHA-256 que exercicio_0256,Revisão humana; não apagar
+possivel_duplicata,exercicio_0288,/exercises/im_ex288.gif,Mesmo SHA-256 que exercicio_0245,Revisão humana; não apagar
+nome_repetido,exercicio_0291,/exercises/im_ex291.gif,"Nome ""Abdominal com Pernas Elevadas"" também em exercicio_0132",Revisão humana do nome
+nome_repetido,exercicio_0299,/exercises/im_ex299.gif,"Nome ""Supino Reto - pegada neutra (halteres)"" também em exercicio_0947",Revisão humana do nome
+possivel_duplicata,exercicio_0319,/exercises/im_ex319.gif,Mesmo SHA-256 que exercicio_0327,Revisão humana; não apagar
+possivel_duplicata,exercicio_0327,/exercises/im_ex327.gif,Mesmo SHA-256 que exercicio_0319,Revisão humana; não apagar
+possivel_duplicata,exercicio_0331,/exercises/im_ex331.gif,Mesmo SHA-256 que exercicio_0255,Revisão humana; não apagar
+nome_repetido,exercicio_0363,/exercises/im_ex363.gif,"Nome ""Leg Press Vertical (máquina)"" também em exercicio_0097",Revisão humana do nome
+nome_repetido,exercicio_0370,/exercises/im_ex370.gif,"Nome ""Leg Press Unilateral (máquina)"" também em exercicio_0209",Revisão humana do nome
+nome_repetido,exercicio_0377,/exercises/im_ex377.gif,"Nome ""Elevação de Panturrilha Sentado (halteres)"" também em exercicio_0216",Revisão humana do nome
+nome_repetido,exercicio_0477,/exercises/im_ex477.gif,"Nome ""Desenvolvimento de Ombros Sentado (smith)"" também em exercicio_0239",Revisão humana do nome
+nome_repetido,exercicio_0480,/exercises/im_ex480.gif,"Nome ""Encolhimento de Ombros (smith)"" também em exercicio_0226",Revisão humana do nome
+nome_repetido,exercicio_0555,/exercises/im_ex555.gif,"Nome ""Encolhimento de Ombros (máquina)"" também em exercicio_0227",Revisão humana do nome
+nome_repetido,exercicio_0566,/exercises/im_ex566.gif,"Nome ""Elevação de Panturrilha Sentado (máquina)"" também em exercicio_0064, exercicio_0590",Revisão humana do nome
+nome_repetido,exercicio_0590,/exercises/im_ex590.gif,"Nome ""Elevação de Panturrilha Sentado (máquina)"" também em exercicio_0064, exercicio_0566",Revisão humana do nome
+nome_repetido,exercicio_0656,/exercises/im_ex656.gif,"Nome ""Rotação de Tronco (barra)"" também em exercicio_0027",Revisão humana do nome
+nome_repetido,exercicio_0693,/exercises/im_ex693.gif,"Nome ""Rosca de Punho (barra)"" também em exercicio_0023",Revisão humana do nome
+nome_repetido,exercicio_0721,/exercises/im_ex721.gif,"Nome ""Remada Alta (polia)"" também em exercicio_0228",Revisão humana do nome
+nome_repetido,exercicio_0740,/exercises/im_ex740.gif,"Nome ""Rotação de Ombros Externa (polia)"" também em exercicio_0163",Revisão humana do nome
+nome_repetido,exercicio_0749,/exercises/im_ex749.gif,"Nome ""Rosca Direta (polia)"" também em exercicio_0169, exercicio_0802",Revisão humana do nome
+nome_repetido,exercicio_0799,/exercises/im_ex799.gif,"Nome ""Adução de Quadril (polia)"" também em exercicio_0037",Revisão humana do nome
+nome_repetido,exercicio_0802,/exercises/im_ex802.gif,"Nome ""Rosca Direta (polia)"" também em exercicio_0169, exercicio_0749",Revisão humana do nome
+nome_repetido,exercicio_0805,/exercises/im_ex805.gif,"Nome ""Abdominal (polia)"" também em exercicio_0250",Revisão humana do nome
+nome_repetido,exercicio_0806,/exercises/im_ex806.gif,"Nome ""Rosca de Punho (polia)"" também em exercicio_0203",Revisão humana do nome
+nome_repetido,exercicio_0814,/exercises/im_ex814.gif,"Nome ""Supino Declinado em Pé (polia)"" também em exercicio_0176",Revisão humana do nome
+nome_repetido,exercicio_0847,/exercises/im_ex847.gif,"Nome ""Abdominal Oblíquo (polia)"" também em exercicio_0249",Revisão humana do nome
+nome_repetido,exercicio_0862,/exercises/im_ex862.gif,"Nome ""Elevação Frontal Unilateral (polia)"" também em exercicio_0240",Revisão humana do nome
+nome_repetido,exercicio_0889,/exercises/im_ex889.gif,"Nome ""Extensão de Tríceps em Pé (halteres)"" também em exercicio_0218",Revisão humana do nome
+nome_repetido,exercicio_0935,/exercises/im_ex935.gif,"Nome ""Rosca Martelo (halteres)"" também em exercicio_0015",Revisão humana do nome
+nome_repetido,exercicio_0947,/exercises/im_ex947.gif,"Nome ""Supino Reto - pegada neutra (halteres)"" também em exercicio_0299",Revisão humana do nome
+nome_repetido,exercicio_1044,/exercises/im_ex1044.gif,"Nome ""Extensão de Tríceps Sentado (halteres)"" também em exercicio_0221",Revisão humana do nome
+nome_repetido,exercicio_1064,/exercises/im_ex1064.gif,"Nome ""Tríceps Coice (halteres)"" também em exercicio_0044",Revisão humana do nome
+caminho_compartilhado,ex-supino-reto-barra,src/assets/exercises/supino-reto-barra.gif.asset.json,"Cópia do mesmo conteúdo de im_ex5.gif (lib-0005), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-supino-inclinado-halteres,src/assets/exercises/supino-inclinado-halteres.gif.asset.json,"Cópia do mesmo conteúdo de im_ex7.gif (lib-0007), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-flexao,src/assets/exercises/flexao.gif.asset.json,"Cópia do mesmo conteúdo de im_ex107.gif (lib-0107), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-crucifixo-polia,src/assets/exercises/crucifixo-polia.gif.asset.json,"Cópia do mesmo conteúdo de im_ex94.gif (lib-0094), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-remada-curvada,src/assets/exercises/remada-curvada.gif.asset.json,"Cópia do mesmo conteúdo de im_ex387.gif (lib-0387), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-puxada-frente,src/assets/exercises/puxada-frente.gif.asset.json,"Cópia do mesmo conteúdo de im_ex99.gif (lib-0099), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-barra-fixa,src/assets/exercises/barra-fixa.gif.asset.json,"Cópia do mesmo conteúdo de im_ex112.gif (lib-0112), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-remada-unilateral,src/assets/exercises/remada-unilateral.gif.asset.json,"Cópia do mesmo conteúdo de im_ex109.gif (lib-0109), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-remada-maquina,src/assets/exercises/remada-maquina.gif.asset.json,"Cópia do mesmo conteúdo de im_ex50.gif (lib-0050), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-desenvolvimento-halteres,src/assets/exercises/desenvolvimento-halteres.gif.asset.json,"Cópia do mesmo conteúdo de im_ex74.gif (lib-0074), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-elevacao-lateral,src/assets/exercises/elevacao-lateral.gif.asset.json,"Cópia do mesmo conteúdo de im_ex3.gif (lib-0003), identificada por tamanho",Revisão humana; manter
+metadado_ausente,ex-face-pull,,Exercício sem imagem declarada (usa silhueta),Escolher imagem com revisão humana
+caminho_compartilhado,ex-rosca-direta,src/assets/exercises/rosca-direta.gif.asset.json,"Cópia do mesmo conteúdo de im_ex13.gif (lib-0013), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-rosca-martelo,src/assets/exercises/rosca-martelo.gif.asset.json,"Cópia do mesmo conteúdo de im_ex15.gif (lib-0015), identificada por tamanho",Revisão humana; manter
+metadado_ausente,ex-rosca-elastico,,Exercício sem imagem declarada (usa silhueta),Escolher imagem com revisão humana
+caminho_compartilhado,ex-triceps-polia,src/assets/exercises/triceps-polia.gif.asset.json,"Cópia do mesmo conteúdo de im_ex46.gif (lib-0046), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-triceps-frances,src/assets/exercises/triceps-frances.gif.asset.json,"Cópia do mesmo conteúdo de im_ex238.gif (lib-0238), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-mergulho-banco,src/assets/exercises/mergulho-banco.gif.asset.json,"Cópia do mesmo conteúdo de im_ex86.gif (lib-0086), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-agachamento-livre,src/assets/exercises/agachamento-livre.gif.asset.json,"Cópia do mesmo conteúdo de im_ex182.gif (lib-0182), identificada por tamanho",Revisão humana; manter
+metadado_ausente,ex-agachamento-goblet,,Exercício sem imagem declarada (usa silhueta),Escolher imagem com revisão humana
+caminho_compartilhado,ex-leg-press,src/assets/exercises/leg-press.gif.asset.json,"Cópia do mesmo conteúdo de im_ex29.gif (lib-0029), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-cadeira-extensora,src/assets/exercises/cadeira-extensora.gif.asset.json,"Cópia do mesmo conteúdo de im_ex32.gif (lib-0032), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-afundo,src/assets/exercises/afundo.gif.asset.json,"Cópia do mesmo conteúdo de im_ex150.gif (lib-0150), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-levantamento-romeno,src/assets/exercises/levantamento-romeno.gif.asset.json,"Cópia do mesmo conteúdo de im_ex47.gif (lib-0047), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-mesa-flexora,src/assets/exercises/mesa-flexora.gif.asset.json,"Cópia do mesmo conteúdo de im_ex61.gif (lib-0061), identificada por tamanho",Revisão humana; manter
+metadado_ausente,ex-ponte-gluteo,,Exercício sem imagem declarada (usa silhueta),Escolher imagem com revisão humana
+metadado_ausente,ex-kettlebell-swing,,Exercício sem imagem declarada (usa silhueta),Escolher imagem com revisão humana
+metadado_ausente,ex-abducao-elastico,,Exercício sem imagem declarada (usa silhueta),Escolher imagem com revisão humana
+caminho_compartilhado,ex-panturrilha-pe,src/assets/exercises/panturrilha-pe.gif.asset.json,"Cópia do mesmo conteúdo de im_ex629.gif (lib-0629), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-panturrilha-halter,src/assets/exercises/panturrilha-halter.gif.asset.json,"Cópia do mesmo conteúdo de im_ex114.gif (lib-0114), identificada por tamanho",Revisão humana; manter
+caminho_compartilhado,ex-prancha,src/assets/exercises/prancha.gif.asset.json,"Cópia do mesmo conteúdo de im_ex92.gif (lib-0092), identificada por tamanho",Revisão humana; manter
+metadado_ausente,ex-abdominal-polia,,Exercício sem imagem declarada (usa silhueta),Escolher imagem com revisão humana
+caminho_compartilhado,ex-elevacao-pernas,src/assets/exercises/elevacao-pernas.gif.asset.json,"Cópia do mesmo conteúdo de im_ex18.gif (lib-0018), identificada por tamanho",Revisão humana; manter
+metadado_ausente,ex-dead-bug,,Exercício sem imagem declarada (usa silhueta),Escolher imagem com revisão humana
+imagem_sem_referencia,,base/res/drawable/im_ex_152.gif,"16817 bytes, 201x227, sha 4c8985e81f036ae8; nome fora do padrão",Preservar; não apagar
+caminho_declarado_inexistente,exercicio_0000..exercicio_1110,/exercises/im_exN.gif,Pasta public/exercises/ não existe; app usa ponteiros em src/assets/library,Decidir se mantém ponteiros (sem ação automática)
+id_divergente_referencia,exercicio_NNNN <-> lib-NNNN,src/lib/local/catalog.ts,App usa lib-NNNN; referência usa exercicio_NNNN,Preservar IDs do app; manter de-para
+acessibilidade,todos,src/components/exercise-visual.tsx,"alt presente e não vazio (""Demonstração do movimento: {nome}""); dados sem descrição própria","Sugestão: descrição do movimento, ex. ""Pessoa sentada empurrando halteres acima da cabeça"""
