@@ -23,7 +23,8 @@ let instance: LocalDB | null = null;
 export function localDB(): LocalDB {
   if (!instance) {
     instance = new LocalDB();
-    void ensureLibrary(instance);
+    const db = instance;
+    setTimeout(() => void ensureLibrary(db), 0);
   }
   return instance;
 }
@@ -34,7 +35,7 @@ async function ensureLibrary(db: LocalDB) {
     const have = new Set(await db.exercises.toCollection().primaryKeys());
     const missing = [...buildCatalog(), ...buildLibrary()].filter((e) => !have.has(e.id));
     if (missing.length) await db.exercises.bulkPut(missing);
-  } catch (e) { console.error("Biblioteca de exercícios não carregada", String(e), (e as Error)?.stack?.slice(0,300)); }
+  } catch (e) { console.error("Biblioteca de exercícios não carregada", e); }
 }
 
 /** Executa uma escrita; em falha mostra erro claro e não indica "salvo". */
