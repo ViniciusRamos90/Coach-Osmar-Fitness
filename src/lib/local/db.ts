@@ -34,7 +34,7 @@ async function ensureLibrary(db: LocalDB) {
     const have = new Set(await db.exercises.toCollection().primaryKeys());
     const missing = [...buildCatalog(), ...buildLibrary()].filter((e) => !have.has(e.id));
     if (missing.length) await db.exercises.bulkAdd(missing);
-  } catch { /* tenta novamente na próxima abertura */ }
+  } catch (e) { console.error("Biblioteca de exercícios não carregada", e); }
 }
 
 /** Executa uma escrita; em falha mostra erro claro e não indica "salvo". */
