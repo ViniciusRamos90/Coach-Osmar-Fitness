@@ -1,4 +1,6 @@
 import { EXERCISE_MEDIA } from "./exercise-media";
+import { LIBRARY } from "./library-data";
+import { LIBRARY_MEDIA } from "./library-media";
 import type { Equipment, Exercise, Muscle } from "./models";
 
 // Catálogo original de demonstração (textos próprios deste projeto).
@@ -45,4 +47,13 @@ const SEEDS: Seed[] = [
 
 export function buildCatalog(): Exercise[] {
   return SEEDS.map(([id, name, muscleGroups, equipment, instructions, caution]) => ({ id, name, muscleGroups, equipment, instructions, caution, imageUrl: EXERCISE_MEDIA[id], isFavorite: false }));
+}
+
+const LIB_STEPS = ["Ajuste o equipamento e posicione-se com a coluna neutra.", "Execute o movimento com controle, conforme a animação.", "Retorne devagar à posição inicial."];
+
+/** Biblioteca licenciada de 1.111 exercícios (IDs estáveis lib-0000..lib-1110). */
+export function buildLibrary(): Exercise[] {
+  return LIBRARY.map(([index, name, equipment, muscleGroups]) => ({
+    id: `lib-${String(index).padStart(4, "0")}`, name, muscleGroups, equipment, instructions: LIB_STEPS, caution: GENERAL, imageUrl: LIBRARY_MEDIA[index], isFavorite: false,
+  }));
 }

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Heart, SearchX } from "lucide-react";
 import { ExerciseVisual } from "@/components/exercise-visual";
 import { Chip, EmptyState, SearchInput, Button } from "@/components/common";
@@ -22,6 +22,8 @@ export function ExerciseBrowser({ exercises, onSelect, actionLabel }: { exercise
     const f = filterExercises(exercises, q, muscle, equip, fav);
     return sort === "az" ? f : [...f].reverse();
   }, [exercises, q, muscle, equip, fav, sort]);
+  const [limit, setLimit] = useState(60);
+  useEffect(() => setLimit(60), [q, muscle, equip, fav, sort]);
   const clear = () => { setQ(""); setMuscle(null); setEquip(null); setFav(false); };
 
   return (
@@ -43,9 +45,9 @@ export function ExerciseBrowser({ exercises, onSelect, actionLabel }: { exercise
         <EmptyState icon={SearchX} title="Nenhum exercício encontrado" description="Tente outros termos ou remova filtros." action={<Button variant="outline" onClick={clear}>Limpar filtros</Button>} />
       ) : (
         <ul className="divide-y rounded-xl border bg-card">
-          {list.map((e) => (
+          {list.slice(0, limit).map((e) => (
             <li key={e.id} className="flex items-center gap-2 pr-2">
-              <button onClick={() => onSelect(e)} className="flex min-h-14 flex-1 items-center gap-3 px-3 py-2 text-left hover:bg-accent/40 focus-visible:outline-2">
+              <button onClick={() => onSelect(e)} className="flex min-h-14 min-w-0 flex-1 items-center gap-3 px-3 py-2 text-left hover:bg-accent/40 focus-visible:outline-2">
                 <span className="flex h-14 w-16 shrink-0 items-center justify-center rounded-lg bg-surface" aria-hidden="true"><ExerciseVisual exercise={e} /></span>
                 <span className="min-w-0">
                   <span className="block truncate font-medium">{e.name}</span>
@@ -59,6 +61,9 @@ export function ExerciseBrowser({ exercises, onSelect, actionLabel }: { exercise
             </li>
           ))}
         </ul>
+      )}
+      {list.length > limit && (
+        <Button variant="outline" className="w-full" onClick={() => setLimit(limit + 60)}>Mostrar mais ({list.length - limit} restantes)</Button>
       )}
     </div>
   );
