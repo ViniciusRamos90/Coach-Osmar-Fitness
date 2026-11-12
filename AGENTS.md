@@ -19,3 +19,4 @@
 - Onboarding answers are kept per user in browser storage (`src/components/onboarding.tsx`) during the frontend-first phase; move to the database when the backend phase starts.
 - Fase 1 local data (routines, catalog, sessions, prefs) lives in IndexedDB via Dexie in `src/lib/local/`; pure logic in `routines.ts` is unit-tested — offline-first, no account needed.
 - The licensed exercise library (1,111 items, ids lib-NNNN) is generated into `src/lib/local/library-data.ts`/`library-media.ts` from the user JSON; GIFs are CDN asset pointers in `src/assets/library/`, and missing items are added to IndexedDB on open so favorites survive.
+- Image resolution for exercises goes through `resolveVisual` in `src/lib/local/exercise-media.ts` (manifest keyed by exercise id, review status defaults to pending) — one place to change images.

@@ -54,3 +54,49 @@ export const EXERCISE_MEDIA: Partial<Record<string, string>> = {
   "ex-prancha": m24.url,
   "ex-elevacao-pernas": m25.url,
 };
+
+// Ilustrações originais (estáticas) criadas para os 8 seeds sem animação licenciada.
+import o0 from "@/assets/exercises/face-pull.jpg";
+import o1 from "@/assets/exercises/rosca-elastico.jpg";
+import o2 from "@/assets/exercises/agachamento-goblet.jpg";
+import o3 from "@/assets/exercises/ponte-gluteo.jpg";
+import o4 from "@/assets/exercises/kettlebell-swing.jpg";
+import o5 from "@/assets/exercises/abducao-elastico.jpg";
+import o6 from "@/assets/exercises/abdominal-polia.jpg";
+import o7 from "@/assets/exercises/dead-bug.jpg";
+import { LIBRARY_MEDIA } from "./library-media";
+
+export type ReviewStatus = "approved" | "pending";
+export interface VisualEntry {
+  /** URL do asset; dois exercícios podem apontar para o mesmo asset sem duplicar o arquivo. */
+  src: string;
+  alt: string;
+  source: "licensed" | "original";
+  reviewStatus: ReviewStatus;
+  reviewedAt?: string;
+  reviewedBy?: string;
+}
+
+const ORIGINAL: Record<string, [string, string]> = {
+  "ex-face-pull": [o0, "Ilustração: puxada da corda na polia em direção ao rosto, cotovelos altos"],
+  "ex-rosca-elastico": [o1, "Ilustração: rosca de bíceps em pé pisando no elástico"],
+  "ex-agachamento-goblet": [o2, "Ilustração: agachamento segurando kettlebell junto ao peito"],
+  "ex-ponte-gluteo": [o3, "Ilustração: deitado de costas elevando o quadril na ponte de glúteo"],
+  "ex-kettlebell-swing": [o4, "Ilustração: balanço do kettlebell à frente com quadril estendido"],
+  "ex-abducao-elastico": [o5, "Ilustração: meio agachamento afastando os joelhos contra mini elástico"],
+  "ex-abdominal-polia": [o6, "Ilustração: ajoelhado na polia alta flexionando o tronco com a corda"],
+  "ex-dead-bug": [o7, "Ilustração: inseto morto estendendo braço e perna opostos"],
+};
+
+/** Registro de revisão visual. Sem resultado detalhado persistido → "pending" (nunca inventar aprovação). */
+export const REVIEW_LOG: Partial<Record<string, Pick<VisualEntry, "reviewStatus" | "reviewedAt" | "reviewedBy">>> = {};
+
+/** Manifesto central: resolve a imagem por exerciseId estável. */
+export function resolveVisual(id: string, name = ""): VisualEntry | undefined {
+  const review = REVIEW_LOG[id] ?? { reviewStatus: "pending" as const };
+  const original = ORIGINAL[id];
+  if (original) return { src: original[0], alt: original[1], source: "original", ...review };
+  const licensed = EXERCISE_MEDIA[id] ?? (id.startsWith("lib-") ? LIBRARY_MEDIA[Number(id.slice(4))] : undefined);
+  if (licensed) return { src: licensed, alt: `Demonstração do movimento: ${name}`.trim(), source: "licensed", ...review };
+  return undefined;
+}

@@ -2,8 +2,7 @@ import Dexie, { type Table } from "dexie";
 import { useLiveQuery } from "dexie-react-hooks";
 import { toast } from "sonner";
 import { buildCatalog, buildLibrary } from "./catalog";
-import { EXERCISE_MEDIA } from "./exercise-media";
-import { LIBRARY_MEDIA } from "./library-media";
+import { resolveVisual } from "./exercise-media";
 import type { Exercise, Routine, UserPreferences, WorkoutSession } from "./models";
 
 // IndexedDB é a fonte local de verdade da Fase 1. Interfaces simples para futura sincronização.
@@ -73,7 +72,7 @@ export const useActiveSession = () =>
 
 export const useExercises = () => useLiveQuery(async () => {
   const list = await localDB().exercises.orderBy("name").toArray();
-  return list.map((exercise) => ({ ...exercise, imageUrl: EXERCISE_MEDIA[exercise.id] ?? (exercise.id.startsWith("lib-") ? LIBRARY_MEDIA[Number(exercise.id.slice(4))] : undefined) ?? exercise.imageUrl }));
+  return list.map((exercise) => ({ ...exercise, imageUrl: resolveVisual(exercise.id)?.src ?? exercise.imageUrl }));
 }, []);
 export const useRoutines = () => useLiveQuery(() => localDB().routines.toArray(), []);
 export const useExerciseHistory = (exerciseId: string | null) =>
