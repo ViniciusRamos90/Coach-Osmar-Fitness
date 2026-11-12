@@ -1,3 +1,4 @@
+import type { ExerciseMetadata } from "./metadata";
 // Modelos locais da Fase 1 (IndexedDB). Sem dados pessoais obrigatórios.
 export type LoadUnit = "kg" | "lb";
 export type RoutineStatus = "active" | "draft" | "archived";
@@ -24,6 +25,8 @@ export interface Exercise {
   caution: string;
   imageUrl?: string;
   isFavorite: boolean;
+  /** Metadados controlados (somente lib-* nesta etapa; ex-* podem não ter). */
+  metadata?: ExerciseMetadata;
 }
 
 export interface RoutineExercise {
