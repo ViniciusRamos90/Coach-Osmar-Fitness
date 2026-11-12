@@ -2,8 +2,7 @@ import Dexie, { type Table } from "dexie";
 import { useLiveQuery } from "dexie-react-hooks";
 import { toast } from "sonner";
 import { buildCatalog, buildLibrary } from "./catalog";
-import { EXERCISE_MEDIA } from "./exercise-media";
-import { LIBRARY_MEDIA } from "./library-media";
+import { resolveVisual } from "./exercise-media";
 import type { Exercise, Routine, UserPreferences, WorkoutSession } from "./models";
 
 // IndexedDB é a fonte local de verdade da Fase 1. Interfaces simples para futura sincronização.
