@@ -3,6 +3,7 @@ import { useLiveQuery } from "dexie-react-hooks";
 import { toast } from "sonner";
 import { buildCatalog, buildLibrary } from "./catalog";
 import { resolveVisual } from "./exercise-media";
+import { pendingMigrations, type ExerciseMetadata } from "./metadata";
 import type { Exercise, Routine, UserPreferences, WorkoutSession } from "./models";
 
 // IndexedDB é a fonte local de verdade da Fase 1. Interfaces simples para futura sincronização.
@@ -34,7 +35,14 @@ async function ensureLibrary(db: LocalDB) {
     const have = new Set(await db.exercises.toCollection().primaryKeys());
     const missing = [...buildCatalog(), ...buildLibrary()].filter((e) => !have.has(e.id));
     if (missing.length) await db.exercises.bulkPut(missing);
+    await migrateLibraryMetadata(db);
   } catch (e) { console.error("Biblioteca de exercícios não carregada", e); }
+}
+
+/** Migração idempotente: só completa metadados ausentes nos lib-*; não toca favoritos, nomes ou imagens. */
+async function migrateLibraryMetadata(db: LocalDB) {
+  const todo = pendingMigrations(await db.exercises.where("id").startsWith("lib-").toArray());
+  if (todo.length) await db.transaction("rw", db.exercises, async () => { for (const t of todo) await db.exercises.update(t.id, { metadata: t.metadata }); });
 }
 
 /** Executa uma escrita; em falha mostra erro claro e não indica "salvo". */
@@ -52,6 +60,11 @@ export async function safeWrite(fn: () => Promise<unknown>, okMsg?: string): Pro
 
 export const exerciseRepo = {
   toggleFavorite: (ex: Exercise) => safeWrite(() => localDB().exercises.update(ex.id, { isFavorite: !ex.isFavorite })),
+};
+
+export const metadataRepo = {
+  saveMany: (items: { id: string; metadata: ExerciseMetadata }[], msg?: string) =>
+    safeWrite(() => localDB().transaction("rw", localDB().exercises, async () => { for (const i of items) await localDB().exercises.update(i.id, { metadata: i.metadata }); }), msg),
 };
 
 export const routineRepo = {
