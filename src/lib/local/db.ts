@@ -73,7 +73,7 @@ export const useActiveSession = () =>
 
 export const useExercises = () => useLiveQuery(async () => {
   const list = await localDB().exercises.orderBy("name").toArray();
-  return list.map((exercise) => ({ ...exercise, imageUrl: EXERCISE_MEDIA[exercise.id] ?? (exercise.id.startsWith("lib-") ? LIBRARY_MEDIA[Number(exercise.id.slice(4))] : undefined) ?? exercise.imageUrl }));
+  return list.map((exercise) => ({ ...exercise, imageUrl: resolveVisual(exercise.id)?.src ?? exercise.imageUrl }));
 }, []);
 export const useRoutines = () => useLiveQuery(() => localDB().routines.toArray(), []);
 export const useExerciseHistory = (exerciseId: string | null) =>
