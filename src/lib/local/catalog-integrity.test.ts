@@ -14,8 +14,8 @@ describe("integridade do catálogo de imagens", () => {
     expect(seeds).toHaveLength(34);
     expect(lib).toHaveLength(1111);
     expect(new Set(all.map((e) => e.id)).size).toBe(1145);
-    expect(lib[0].id).toBe("lib-0000");
-    expect(lib[1110].id).toBe("lib-1110");
+    expect(lib[0]?.id).toBe("lib-0000");
+    expect(lib[1110]?.id).toBe("lib-1110");
     expect(seeds.every((e) => e.id.startsWith("ex-"))).toBe(true);
   });
 
